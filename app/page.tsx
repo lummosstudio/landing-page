@@ -5,7 +5,6 @@ import { Footer } from '@/components/footer'
 import Link from 'next/link'
 import { ArrowRight, Zap, TrendingUp, Shield, Users, Sparkles, Code2 } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { AnimatedCard, AnimatedSection, AnimatedItem } from '@/components/animated-section'
 
 export default function Home() {
   return (
@@ -86,18 +85,6 @@ export default function Home() {
                     className="px-8 py-4 rounded-lg bg-accent text-accent-foreground font-semibold glow-accent-hover scale-hover flex items-center justify-center gap-2"
                   >
                     Let&apos;s Grow <ArrowRight size={20} />
-                  </Link>
-                </motion.div>
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ duration: 0.2, ease: 'easeOut' }}
-                >
-                  <Link
-                    href="/works"
-                    className="px-8 py-4 rounded-lg border border-accent/60 text-accent font-semibold hover:border-accent hover:bg-accent/5 transition-all scale-hover"
-                  >
-                    View Our Work
                   </Link>
                 </motion.div>
               </motion.div>
@@ -206,7 +193,7 @@ export default function Home() {
                       whileHover={{ scale: 1.15, rotate: 10 }}
                       transition={{ duration: 0.3, ease: 'easeOut' }}
                     >
-                      <Icon className="w-14 h-14 text-accent mb-6" />
+                      <span className="mb-6 block"><Icon className="w-14 h-14 text-accent" /></span>
                     </motion.div>
                     <h3 className="text-lg font-semibold mb-3">{service.title}</h3>
                     <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
@@ -360,154 +347,83 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Portfolio Preview Section */}
+        {/* Testimonials Section */}
         <section className="w-full py-24 md:py-48 px-4 sm:px-6 lg:px-8 bg-background">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-20">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">Case Studies & Portfolio</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-                See how we&apos;ve helped businesses scale revenue, build authority, and dominate their markets.
-              </p>
-            </div>
 
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{
-                staggerChildren: 0.1,
-                delayChildren: 0.05,
-              }}
-            >
-              {[1, 2, 3].map((idx) => (
-                <motion.div
-                  key={idx}
-                  variants={{
-                    initial: { opacity: 0, y: 30 },
-                    animate: { opacity: 1, y: 0 },
-                  }}
-                  transition={{ duration: 0.6, ease: 'easeOut' }}
-                  whileHover={{
-                    y: -15,
-                    transition: { duration: 0.3, ease: 'easeOut' },
-                  }}
-                  className="group cursor-pointer overflow-hidden rounded-lg border border-border/50 bg-card/50 hover:border-accent/50 transition-all duration-300 h-72 premium-shadow-hover backdrop-blur-sm"
-                >
-                  <div className="w-full h-full bg-gradient-to-br from-accent/15 to-yellow-400/10 flex items-center justify-center relative overflow-hidden">
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 flex items-center justify-center"
-                      whileHover={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <span className="text-accent font-semibold">View Project</span>
-                    </motion.div>
-                    <div className="text-center">
-                      <motion.div
-                        whileHover={{ scale: 1.1, rotate: 5 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <Code2 className="w-16 h-16 text-accent/40 mx-auto mb-3 group-hover:text-accent/60 transition-colors" />
-                      </motion.div>
-                      <p className="text-muted-foreground">Project {idx}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            <div className="text-center">
-              <Link
-                href="/works"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-accent text-accent font-semibold hover:bg-accent/10 transition-colors"
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-3 gap-6"
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{
+                  staggerChildren: 0.1,
+                  delayChildren: 0.05,
+                }}
               >
-                View All Projects <ArrowRight size={20} />
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
-        <section className="w-full py-24 md:py-48 px-4 sm:px-6 lg:px-8 bg-card">
-          <div className="container mx-auto max-w-6xl">
-            <div className="text-center mb-20">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">What Our Clients Say</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Real feedback from companies we&apos;ve helped transform.
-              </p>
-            </div>
-
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-3 gap-6"
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{
-                staggerChildren: 0.1,
-                delayChildren: 0.05,
-              }}
-            >
-              {[
-                {
-                  quote: 'Within 3 months, our Instagram grew from 2K to 45K followers. Their content strategy is game-changing.',
-                  author: 'Priya Sharma',
-                  role: 'Founder, Cafe Bliss',
-                },
-                {
-                  quote: 'Our hotel bookings increased by 65% after they optimized our Google Ads. Worth every penny.',
-                  author: 'Rajesh Patel',
-                  role: 'Manager, Heritage Hotels',
-                },
-                {
-                  quote: 'The branding work completely transformed how people perceive our real estate business. Highly professional team.',
-                  author: 'Ananya Gupta',
-                  role: 'CEO, Premium Properties',
-                },
-              ].map((testimonial, idx) => (
-                <motion.div
-                  key={idx}
-                  variants={{
-                    initial: { opacity: 0, y: 20 },
-                    animate: { opacity: 1, y: 0 },
-                  }}
-                  transition={{ duration: 0.6, ease: 'easeOut' }}
-                  whileHover={{
-                    y: -10,
-                    transition: { duration: 0.3, ease: 'easeOut' },
-                  }}
-                  className="p-8 rounded-lg border border-border/50 bg-background/50 hover:border-accent/30 transition-all duration-300 group premium-shadow-hover backdrop-blur-sm"
-                >
+                {[
+                  {
+                    quote: 'Within 3 months, our Instagram grew from 2K to 45K followers. Their content strategy is game-changing.',
+                    author: 'Priya Sharma',
+                    role: 'Founder, Cafe Bliss',
+                  },
+                  {
+                    quote: 'Our hotel bookings increased by 65% after they optimized our Google Ads. Worth every penny.',
+                    author: 'Rajesh Patel',
+                    role: 'Manager, Heritage Hotels',
+                  },
+                  {
+                    quote: 'The branding work completely transformed how people perceive our real estate business. Highly professional team.',
+                    author: 'Ananya Gupta',
+                    role: 'CEO, Premium Properties',
+                  },
+                ].map((testimonial, idx) => (
                   <motion.div
-                    className="flex gap-1 mb-6"
-                    initial="initial"
-                    whileInView="animate"
-                    viewport={{ once: false }}
-                    transition={{
-                      staggerChildren: 0.05,
+                    key={idx}
+                    variants={{
+                      initial: { opacity: 0, y: 20 },
+                      animate: { opacity: 1, y: 0 },
                     }}
+                    transition={{ duration: 0.6, ease: 'easeOut' }}
+                    whileHover={{
+                      y: -10,
+                      transition: { duration: 0.3, ease: 'easeOut' },
+                    }}
+                    className="p-8 rounded-lg border border-border/50 bg-background/50 hover:border-accent/30 transition-all duration-300 group premium-shadow-hover backdrop-blur-sm"
                   >
-                    {[...Array(5)].map((_, i) => (
-                      <motion.span
-                        key={i}
-                        variants={{
-                          initial: { opacity: 0, scale: 0 },
-                          animate: { opacity: 1, scale: 1 },
-                        }}
-                        transition={{ duration: 0.3, delay: i * 0.05 }}
-                        className="text-yellow-400 text-lg"
-                      >
-                        ★
-                      </motion.span>
-                    ))}
+                    <motion.div
+                      className="flex gap-1 mb-6"
+                      initial="initial"
+                      whileInView="animate"
+                      viewport={{ once: false }}
+                      transition={{
+                        staggerChildren: 0.05,
+                      }}
+                    >
+                      {[...Array(5)].map((_, i) => (
+                        <motion.span
+                          key={i}
+                          variants={{
+                            initial: { opacity: 0, scale: 0 },
+                            animate: { opacity: 1, scale: 1 },
+                          }}
+                          transition={{ duration: 0.3, delay: i * 0.05 }}
+                          className="text-yellow-400 text-lg"
+                        >
+                          ★
+                        </motion.span>
+                      ))}
+                    </motion.div>
+                    <p className="text-muted-foreground mb-6 italic leading-relaxed">"{testimonial.quote}"</p>
+                    <div>
+                      <p className="font-semibold text-foreground">{testimonial.author}</p>
+                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                    </div>
                   </motion.div>
-                  <p className="text-muted-foreground mb-6 italic leading-relaxed">"{testimonial.quote}"</p>
-                  <div>
-                    <p className="font-semibold text-foreground">{testimonial.author}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+                ))}
+              </motion.div>
+            </div>
           </div>
         </section>
 

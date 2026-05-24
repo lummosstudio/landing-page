@@ -43,11 +43,6 @@ export function Footer() {
                   Services
                 </Link>
               </li>
-              <li>
-                <Link href="/works" className="text-muted-foreground hover:text-accent transition-colors">
-                  Works
-                </Link>
-              </li>
             </ul>
           </div>
 
