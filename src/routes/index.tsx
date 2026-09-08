@@ -3,7 +3,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { TrustedBySection } from "@/components/sections/TrustedBySection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { WorkSection } from "@/components/sections/WorkSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
@@ -33,7 +32,6 @@ function Index() {
     <main className="min-h-screen bg-background font-sans">
       <SiteHeader />
       <HeroSection />
-      <TrustedBySection />
       <ServicesSection />
       <WorkSection />
       <ProcessSection />

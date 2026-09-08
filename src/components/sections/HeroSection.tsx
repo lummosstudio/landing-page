@@ -105,14 +105,14 @@ export function HeroSection() {
                 variant="outline"
                 className="h-[52px] rounded-xl border-border bg-card px-6 text-[15px] font-semibold text-navy hover:bg-secondary active:scale-[0.99]"
               >
-                <a href="#work" className="inline-flex items-center">
+                <a href="#services" className="inline-flex items-center">
                   <span className="mr-2.5 inline-flex size-7 items-center justify-center rounded-lg bg-secondary text-navy">
-                    <Play
-                      className="size-3 fill-navy text-navy"
+                    <Sparkles
+                      className="size-3.5 text-accent-blue"
                       aria-hidden="true"
                     />
                   </span>
-                  Explore Our Work
+                  Explore Services
                 </a>
               </Button>
             </div>

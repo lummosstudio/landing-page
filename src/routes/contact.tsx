@@ -62,7 +62,7 @@ export const Route = createFileRoute("/contact")({
           address: {
             "@type": "PostalAddress",
             addressLocality: "Pondicherry",
-            addressRegion: "Tamil Nadu",
+            addressRegion: "Pondicherry",
             addressCountry: "IN",
           },
         }),
@@ -83,15 +83,6 @@ const PROJECT_TYPES = [
   "Personal Branding",
   "Website / Landing Page",
   "Comprehensive Retainer",
-];
-
-const BUDGETS = [
-  "Under ₹15,000 / month",
-  "₹15,000 – ₹30,000 / month",
-  "₹30,000 – ₹60,000 / month",
-  "₹60,000 – ₹1,20,000 / month",
-  "₹1,20,000+ / month",
-  "One-time Project / Let's Discuss",
 ];
 
 const REASONS: { title: string; text: string; icon: LucideIcon }[] = [
@@ -188,7 +179,7 @@ const CONTACT_CARDS: {
     icon: MapPin,
     items: [
       {
-        text: "Pondicherry, Tamil Nadu, India",
+        text: "Pondicherry, India",
         href: "https://maps.google.com/?q=Pondicherry,Tamil+Nadu,India",
       },
     ],
@@ -207,6 +198,45 @@ const CONTACT_CARDS: {
 
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submittedData, setSubmittedData] = useState<{
+    fullName: string;
+    mailtoUrl: string;
+  } | null>(null);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const fullName = String(formData.get("fullName") || "").trim();
+    const company = String(formData.get("company") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const phone = String(formData.get("phone") || "").trim();
+    const projectType = String(formData.get("projectType") || "").trim();
+    const details = String(formData.get("details") || "").trim();
+
+    const subject = `New Growth Enquiry: ${fullName}${company ? ` (${company})` : ""}`;
+    const bodyLines = [
+      `Full Name: ${fullName}`,
+      `Brand / Company: ${company || "Not provided"}`,
+      `Email Address: ${email}`,
+      `Phone / WhatsApp: ${phone}`,
+      `Primary Service: ${projectType || "General Marketing / Growth"}`,
+      "",
+      "Goals & Project Details:",
+      details,
+    ];
+    const body = bodyLines.join("\n");
+    const mailtoUrl = `mailto:info@lumosdigitalmedia.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    setSubmittedData({ fullName, mailtoUrl });
+    setSubmitted(true);
+
+    // Open user's email client
+    try {
+      window.location.href = mailtoUrl;
+    } catch {
+      // Fallback handled by rendered button
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background font-sans">
@@ -307,7 +337,7 @@ function ContactPage() {
                           Pondicherry Studio
                         </p>
                         <p className="text-[10px] font-medium text-muted-foreground">
-                          Tamil Nadu, India
+                         India
                         </p>
                       </div>
                     </div>
@@ -388,36 +418,48 @@ function ContactPage() {
                   <span className="text-brand-gradient">Your Vision</span>
                 </h2>
 
-                {submitted ? (
-                  <div className="mt-8 rounded-2xl border border-border bg-secondary/80 p-8 text-center">
+                {submitted && submittedData ? (
+                  <div className="mt-8 rounded-2xl border border-border bg-secondary/80 p-6 sm:p-8 text-center">
                     <CheckCircle2
                       className="mx-auto size-14 text-emerald-600"
                       strokeWidth={1.8}
                       aria-hidden="true"
                     />
-                    <h3 className="mt-5 text-[20px] font-extrabold text-navy">
-                      Thank you! Your enquiry has been received.
+                    <h3 className="mt-4 text-[20px] font-extrabold text-navy">
+                      Thank you, {submittedData.fullName || "there"}!
                     </h3>
-                    <p className="mx-auto mt-2.5 max-w-md text-[14.5px] leading-[1.75] text-muted-foreground">
-                      Our strategy team will review your business details and get in touch with you
-                      within one business day.
+                    <p className="mx-auto mt-2 max-w-md text-[14.5px] leading-[1.75] text-muted-foreground">
+                      Your enquiry has been prepared for{" "}
+                      <span className="font-semibold text-navy">info@lumosdigitalmedia.in</span>.
+                      If your email client didn&apos;t open automatically, click the button below:
                     </p>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      onClick={() => setSubmitted(false)}
-                      className="mt-6 h-11 rounded-full border-border bg-card px-6 text-[14px] font-semibold text-navy hover:bg-secondary"
-                    >
-                      Send another enquiry
-                    </Button>
+                    <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+                      <Button
+                        asChild
+                        className="h-11 w-full sm:w-auto rounded-xl bg-navy px-6 text-[14px] font-semibold text-primary-foreground hover:bg-navy/90"
+                      >
+                        <a href={submittedData.mailtoUrl}>
+                          <Mail className="mr-2 size-4" />
+                          Open Email Client
+                        </a>
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        onClick={() => {
+                          setSubmitted(false);
+                          setSubmittedData(null);
+                        }}
+                        className="h-11 w-full sm:w-auto rounded-xl border-border bg-card px-6 text-[14px] font-semibold text-navy hover:bg-secondary"
+                      >
+                        Send another enquiry
+                      </Button>
+                    </div>
                   </div>
                 ) : (
                   <form
                     className="mt-7 grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2"
-                    onSubmit={(event) => {
-                      event.preventDefault();
-                      setSubmitted(true);
-                    }}
+                    onSubmit={handleSubmit}
                   >
                     <div className="grid gap-2">
                       <Label htmlFor="fullName" className={LABEL_CLASS}>
@@ -480,7 +522,7 @@ function ContactPage() {
                       />
                     </div>
 
-                    <div className="grid gap-2">
+                    <div className="grid gap-2 sm:col-span-2">
                       <Label htmlFor="projectType" className={LABEL_CLASS}>
                         Primary Service Needed
                       </Label>
@@ -496,27 +538,6 @@ function ContactPage() {
                         {PROJECT_TYPES.map((type) => (
                           <option key={type} value={type}>
                             {type}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="grid gap-2">
-                      <Label htmlFor="budget" className={LABEL_CLASS}>
-                        Estimated Monthly Budget
-                      </Label>
-                      <select
-                        id="budget"
-                        name="budget"
-                        defaultValue=""
-                        className={SELECT_CLASS}
-                      >
-                        <option value="" disabled>
-                          Select budget range
-                        </option>
-                        {BUDGETS.map((budget) => (
-                          <option key={budget} value={budget}>
-                            {budget}
                           </option>
                         ))}
                       </select>
@@ -605,7 +626,7 @@ function ContactPage() {
                   Main Studio
                 </p>
                 <p className="mt-2 text-[20px] font-extrabold text-navy">
-                  Pondicherry, Tamil Nadu, India
+                  Pondicherry, India
                 </p>
                 <p className="mt-3 text-[14.5px] leading-[1.75] text-muted-foreground">
                   Headquartered in coastal Pondicherry, we work with ambitious brands
@@ -628,7 +649,7 @@ function ContactPage() {
 
               <div className="relative h-[260px] sm:h-[300px] overflow-hidden rounded-2xl bg-soft-gray lg:col-span-7">
                 <iframe
-                  title="Map showing Lumos Digital's location in Pondicherry, Tamil Nadu"
+                  title="Map showing Lumos Digital's location in Pondicherry"
                   src="https://www.openstreetmap.org/export/embed.html?bbox=79.75%2C11.87%2C79.87%2C11.97&layer=mapnik&marker=11.9139%2C79.8145"
                   loading="lazy"
                   className="size-full border-0"
@@ -676,46 +697,6 @@ function ContactPage() {
                     </AccordionItem>
                   ))}
                 </Accordion>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* FINAL CTA BANNER */}
-        <section
-          aria-labelledby="contact-cta-heading"
-          className="bg-background pb-12 sm:pb-16 lg:pb-20"
-        >
-          <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-            <div className="relative overflow-hidden rounded-3xl bg-navy px-6 py-14 text-center sm:px-10 lg:py-18">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -top-24 -right-16 size-72 rounded-full bg-brand-amber/20 blur-3xl"
-              />
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -bottom-24 -left-16 size-72 rounded-full bg-accent-blue/20 blur-3xl"
-              />
-              <div className="relative max-w-2xl mx-auto">
-                <h2
-                  id="contact-cta-heading"
-                  className="text-[clamp(1.85rem,4.4vw,2.85rem)] leading-[1.12] font-extrabold tracking-[-0.035em] text-primary-foreground"
-                >
-                  Your Next Stage Of Growth Starts Here.
-                </h2>
-                <p className="mt-4 text-[14.5px] sm:text-[15.5px] leading-[1.8] text-primary-foreground/75">
-                  Let&apos;s build a digital presence that gets attention, commands trust,
-                  and fuels predictable business expansion.
-                </p>
-                <Button
-                  asChild
-                  className="bg-brand-gradient mt-8 h-[52px] w-full sm:w-auto rounded-full px-8 text-[15px] font-semibold text-navy shadow-lg hover:opacity-90"
-                >
-                  <a href="#enquiry">
-                    Book A Consultation
-                    <ArrowRight className="ml-2.5 size-4" strokeWidth={2.5} />
-                  </a>
-                </Button>
               </div>
             </div>
           </div>
