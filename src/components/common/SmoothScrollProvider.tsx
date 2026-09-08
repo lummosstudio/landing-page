@@ -42,14 +42,14 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
       const href = target.getAttribute("href");
       if (href && href.startsWith("#") && href.length > 1) {
         const el = document.querySelector(href);
-        if (el) {
+        if (el instanceof HTMLElement) {
           e.preventDefault();
           lenis.scrollTo(el, { offset: -80, duration: 1.2 });
         }
       } else if (href && href.startsWith("/#") && href.length > 2 && window.location.pathname === "/") {
         const hash = href.slice(1);
         const el = document.querySelector(hash);
-        if (el) {
+        if (el instanceof HTMLElement) {
           e.preventDefault();
           lenis.scrollTo(el, { offset: -80, duration: 1.2 });
         }

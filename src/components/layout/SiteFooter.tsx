@@ -37,7 +37,12 @@ const CONTACT_ITEMS = [
   { label: "+91 90037 82254", href: "tel:+919003782254", icon: Phone },
   { label: "+91 97875 82488", href: "tel:+919787582488", icon: Phone },
   { label: "info@lumosdigitalmedia.in", href: "mailto:info@lumosdigitalmedia.in", icon: Mail },
-  { label: "Pondicherry, India", href: "/contact", icon: MapPin },
+  {
+    label: "Opp. Hotel Tamizh Park, Sokkanathan Pet, Puducherry - 605009",
+    href: "https://maps.google.com/?q=Hotel+Tamizh+Park,Sokkanathan+Pet,Mothilal+Nagar,Puducherry,605009",
+    icon: MapPin,
+    isExternal: true,
+  },
 ];
 
 const linkClass =
@@ -140,7 +145,7 @@ export function SiteFooter() {
               {/* Studio Location Chip */}
               <div className="mt-6 inline-flex items-center gap-2 text-[12.5px] text-primary-foreground/60">
                 <Sparkles className="size-3.5 text-brand-amber" />
-                <span>Headquartered in Pondicherry · Serving Worldwide</span>
+                <span>Headquartered in Puducherry · Serving Worldwide</span>
               </div>
             </div>
 
@@ -190,11 +195,16 @@ export function SiteFooter() {
               <ul className="mt-4 space-y-3">
                 {CONTACT_ITEMS.map((item) => {
                   const Icon = item.icon;
+                  const isExternal = "isExternal" in item && item.isExternal;
                   return (
                     <li key={item.label}>
-                      <a href={item.href} className={linkClass}>
+                      <a
+                        href={item.href}
+                        className={linkClass}
+                        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      >
                         <Icon className="mr-2 size-3.5 shrink-0 text-brand-coral" />
-                        <span className="break-all">{item.label}</span>
+                        <span className="leading-snug">{item.label}</span>
                       </a>
                     </li>
                   );

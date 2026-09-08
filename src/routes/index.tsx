@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
+import { ParallaxSpotlightSection } from "@/components/sections/ParallaxSpotlightSection";
 import { WorkSection } from "@/components/sections/WorkSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import heroStudio from "@/assets/hero-studio.webp";
@@ -33,6 +34,7 @@ function Index() {
       <SiteHeader />
       <HeroSection />
       <ServicesSection />
+      <ParallaxSpotlightSection />
       <WorkSection />
       <ProcessSection />
       <SiteFooter />

@@ -62,8 +62,10 @@ export const Route = createFileRoute("/contact")({
           telephone: "+91 90037 82254",
           address: {
             "@type": "PostalAddress",
-            addressLocality: "Pondicherry",
-            addressRegion: "Pondicherry",
+            streetAddress: "Opposite Hotel Tamizh Park, Sokkanathan Pet, Mothilal Nagar, Marie Oulgaret, Vazhudavur Road",
+            addressLocality: "Puducherry",
+            addressRegion: "Puducherry",
+            postalCode: "605009",
             addressCountry: "IN",
           },
         }),
@@ -180,8 +182,8 @@ const CONTACT_CARDS: {
     icon: MapPin,
     items: [
       {
-        text: "Pondicherry, India",
-        href: "https://maps.google.com/?q=Pondicherry,Tamil+Nadu,India",
+        text: "Opp. Hotel Tamizh Park, Sokkanathan Pet, Puducherry - 605009",
+        href: "https://maps.google.com/?q=Hotel+Tamizh+Park,Sokkanathan+Pet,Mothilal+Nagar,Puducherry,605009",
       },
     ],
   },
@@ -344,10 +346,10 @@ function ContactPage() {
                         </span>
                         <div className="leading-tight">
                           <p className="text-[11px] font-extrabold text-navy uppercase tracking-wide">
-                            Pondicherry Studio
+                            Puducherry Studio
                           </p>
                           <p className="text-[10px] font-medium text-muted-foreground">
-                            Tamil Nadu, India
+                            Opp. Hotel Tamizh Park
                           </p>
                         </div>
                       </div>
@@ -637,7 +639,7 @@ function ContactPage() {
                   className="mt-4 text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
                 >
                   Find Us In{" "}
-                  <span className="text-brand-gradient">Pondicherry</span>
+                  <span className="text-brand-gradient">Puducherry</span>
                 </h2>
               </div>
             </Reveal>
@@ -646,36 +648,41 @@ function ContactPage() {
               <div className="mt-8 sm:mt-10 grid gap-6 rounded-3xl border border-border bg-card p-5 sm:p-8 lg:grid-cols-12 lg:items-center shadow-soft">
                 <div className="lg:col-span-5">
                   <p className="text-[12px] font-bold tracking-[0.14em] text-muted-foreground uppercase">
-                    Main Studio
+                    Main Office & Studio
                   </p>
-                  <p className="mt-2 text-[20px] font-extrabold text-navy">
-                    Pondicherry, Tamil Nadu, India
-                  </p>
-                  <p className="mt-3 text-[14.5px] leading-[1.75] text-muted-foreground">
-                    Headquartered in coastal Pondicherry, we work with ambitious brands
-                    across Tamil Nadu, Bangalore, Kerala, and across India.
+                  <h3 className="mt-2 text-[20px] font-extrabold text-navy leading-snug">
+                    Opposite Hotel Tamizh Park
+                  </h3>
+                  <div className="mt-3 space-y-1 text-[14.5px] leading-[1.65] text-muted-foreground">
+                    <p>Sokkanathan Pet, Mothilal Nagar,</p>
+                    <p>Marie Oulgaret, Vazhudavur Road,</p>
+                    <p className="font-semibold text-navy">Puducherry — 605009</p>
+                  </div>
+                  <p className="mt-4 text-[13.5px] leading-[1.7] text-muted-foreground">
+                    Headquartered in Puducherry, we partner with ambitious brands across Tamil Nadu, Bangalore, Kerala, and across India.
                   </p>
                   <Button
                     asChild
-                    className="mt-6 h-11 w-full sm:w-auto rounded-xl bg-navy px-6 text-[14px] font-semibold text-primary-foreground hover:bg-navy/90"
+                    className="mt-6 h-11 w-full sm:w-auto rounded-xl bg-navy px-6 text-[14px] font-semibold text-primary-foreground hover:bg-navy/90 shadow-navy-btn transition-all"
                   >
                     <a
-                      href="https://maps.google.com/?q=Pondicherry,Tamil+Nadu,India"
+                      href="https://maps.google.com/?q=Hotel+Tamizh+Park,Sokkanathan+Pet,Mothilal+Nagar,Puducherry,605009"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <Navigation className="mr-2 size-4" strokeWidth={2.4} />
-                      Get Directions
+                      Get Directions on Google Maps
                     </a>
                   </Button>
                 </div>
 
-                <div className="relative h-[260px] sm:h-[300px] overflow-hidden rounded-2xl bg-soft-gray lg:col-span-7">
+                <div className="relative h-[280px] sm:h-[340px] overflow-hidden rounded-2xl bg-soft-gray lg:col-span-7 border border-border shadow-inner">
                   <iframe
-                    title="Map showing Lumos Digital's location in Pondicherry"
-                    src="https://www.openstreetmap.org/export/embed.html?bbox=79.75%2C11.87%2C79.87%2C11.97&layer=mapnik&marker=11.9139%2C79.8145"
+                    title="Map showing Lumos Digital's office opposite Hotel Tamizh Park in Puducherry"
+                    src="https://maps.google.com/maps?q=Hotel+Tamizh+Park,+Sokkanathan+Pet,+Mothilal+Nagar,+Puducherry+605009&t=&z=16&ie=UTF8&iwloc=&output=embed"
                     loading="lazy"
                     className="size-full border-0"
+                    allowFullScreen
                   />
                 </div>
               </div>
