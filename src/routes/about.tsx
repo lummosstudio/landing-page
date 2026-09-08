@@ -42,6 +42,7 @@ import { Reveal } from "@/components/ui/ScrollReveal";
 import { InteractiveTilt } from "@/components/ui/InteractiveTilt";
 import { SpotlightGrid, SpotlightCard } from "@/components/ui/SpotlightGrid";
 import { MagneticCard } from "@/components/ui/MagneticCard";
+import { WarpSpeedTrails } from "@/components/ui/WarpSpeedTrails";
 import aboutHero from "@/assets/about-hero.webp";
 import aboutStory from "@/assets/about-story.webp";
 
@@ -449,9 +450,12 @@ function AboutPage() {
         {/* WHAT WE DO SECTION */}
         <section
           aria-labelledby="what-we-do-heading"
-          className="bg-soft-gray py-14 sm:py-16 lg:py-24"
+          className="relative overflow-hidden bg-soft-gray/70 py-14 sm:py-16 lg:py-24"
         >
-          <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+          {/* Hyperspace / Warp Speed Parallax Trails Background */}
+          <WarpSpeedTrails className="opacity-80" />
+
+          <div className="relative z-10 mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
             <Reveal direction="up">
               <div className="max-w-xl">
                 <SectionLabel>
@@ -467,37 +471,36 @@ function AboutPage() {
               </div>
             </Reveal>
 
-            <ul className="mt-8 sm:mt-10 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {/* GSAP-Style Interactive Spotlight Matrix */}
+            <SpotlightGrid className="mt-8 sm:mt-10 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {WHAT_WE_DO.map(({ n, title, text, icon: Icon }, index) => (
-                <li key={n}>
-                  <Reveal direction="up" delay={index * 75}>
-                    <article className="group flex h-full flex-col justify-between rounded-3xl border border-border bg-card p-6 sm:p-7 shadow-soft-xs transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-amber/50 hover:shadow-soft-hover">
-                      <div>
-                        <div className="flex items-center justify-between">
-                          <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-secondary text-brand-amber transition-transform group-hover:scale-110">
-                            <Icon className="size-6" strokeWidth={1.8} aria-hidden="true" />
-                          </div>
-                          <span className="text-[13px] font-black text-muted-foreground/40 font-mono">
-                            {n}
-                          </span>
+                <Reveal key={n} direction="up" delay={index * 75} className="h-full">
+                  <SpotlightCard className="h-full flex flex-col justify-between bg-card/90 backdrop-blur-md">
+                    <div>
+                      <div className="flex items-center justify-between">
+                        <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-secondary text-brand-amber transition-all duration-300 group-hover:scale-110 group-hover:bg-brand-amber/15 shadow-soft-xs">
+                          <Icon className="size-6" strokeWidth={1.8} aria-hidden="true" />
                         </div>
-                        <h3 className="mt-6 text-[17px] font-bold tracking-tight text-navy group-hover:text-brand-coral transition-colors">
-                          {title}
-                        </h3>
-                        <p className="mt-2.5 text-[14px] leading-[1.7] text-muted-foreground">
-                          {text}
-                        </p>
+                        <span className="text-[13px] font-black text-muted-foreground/40 font-mono">
+                          {n}
+                        </span>
                       </div>
+                      <h3 className="mt-6 text-[17px] font-bold tracking-tight text-navy group-hover:text-brand-coral transition-colors">
+                        {title}
+                      </h3>
+                      <p className="mt-2.5 text-[14px] leading-[1.7] text-muted-foreground">
+                        {text}
+                      </p>
+                    </div>
 
-                      <div className="mt-6 pt-4 border-t border-border/40 flex items-center gap-2 text-[13px] font-bold text-navy group-hover:text-brand-coral transition-colors">
-                        <span>Explore Service</span>
-                        <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-                      </div>
-                    </article>
-                  </Reveal>
-                </li>
+                    <div className="mt-6 pt-4 border-t border-border/40 flex items-center gap-2 text-[13px] font-bold text-navy group-hover:text-brand-coral transition-colors">
+                      <span>Explore Service</span>
+                      <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </SpotlightCard>
+                </Reveal>
               ))}
-            </ul>
+            </SpotlightGrid>
           </div>
         </section>
 
@@ -612,8 +615,14 @@ function AboutPage() {
         </section>
 
         {/* WHY LUMOS */}
-        <section aria-labelledby="why-heading" className="bg-soft-gray py-14 sm:py-16 lg:py-24">
-          <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+        <section
+          aria-labelledby="why-heading"
+          className="relative overflow-hidden bg-soft-gray/70 py-14 sm:py-16 lg:py-24"
+        >
+          {/* Hyperspace / Warp Speed Parallax Trails Background */}
+          <WarpSpeedTrails className="opacity-80" />
+
+          <div className="relative z-10 mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
             <Reveal direction="up">
               <div className="max-w-xl">
                 <SectionLabel>
@@ -633,7 +642,7 @@ function AboutPage() {
             <SpotlightGrid className="mt-8 sm:mt-10 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {WHY.map(({ title, text, icon: Icon }, index) => (
                 <Reveal key={title} direction="up" delay={index * 75} className="h-full">
-                  <SpotlightCard className="h-full flex flex-col justify-between">
+                  <SpotlightCard className="h-full flex flex-col justify-between bg-card/90 backdrop-blur-md">
                     <div>
                       <div className="flex items-center justify-between">
                         <span className="inline-flex size-12 items-center justify-center rounded-xl bg-secondary text-navy transition-all duration-300 group-hover:scale-110 group-hover:bg-brand-amber/15 group-hover:text-brand-amber shadow-soft-xs">
