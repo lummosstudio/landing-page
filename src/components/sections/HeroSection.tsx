@@ -1,5 +1,5 @@
-import { ArrowRight, Play, Sparkles, PenTool, TrendingUp } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { ArrowRight, Play, Sparkles, TrendingUp, Target, Star, CheckCircle } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 import { Button } from "@/components/ui/button";
 import heroStudio from "@/assets/hero-studio.webp";
@@ -8,9 +8,9 @@ import avatar2 from "@/assets/avatar-2.webp";
 import avatar3 from "@/assets/avatar-3.webp";
 import avatar4 from "@/assets/avatar-4.webp";
 
-const HIGHLIGHTS: { icon: LucideIcon; label: string }[] = [
-  { icon: Sparkles, label: "Smart Strategy" },
-  { icon: PenTool, label: "Creative Marketing" },
+const HIGHLIGHTS = [
+  { icon: Target, label: "Smart Strategy" },
+  { icon: Sparkles, label: "Creative Content" },
   { icon: TrendingUp, label: "Business Growth" },
 ];
 
@@ -26,119 +26,193 @@ export function HeroSection() {
     <section
       id="home"
       aria-labelledby="hero-heading"
-      className="relative overflow-hidden bg-background"
+      className="relative overflow-hidden bg-background py-8 sm:py-12 lg:py-16 xl:py-20"
     >
-      <div className="mx-auto grid max-w-[1440px] items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.02fr)] lg:gap-8">
-        {/* Copy column */}
-        <div className="order-2 px-5 pb-16 sm:px-8 lg:order-1 lg:py-20 lg:pl-[max(2rem,calc((100vw-1240px)/2))] lg:pr-6">
-          <p className="flex items-center gap-2 text-[13px] font-bold tracking-[0.08em] text-navy uppercase">
-            Lumos Digital{" "}
-            <span className="text-brand-gradient">Media</span>
-            <span className="bg-brand-gradient size-2 rounded-full" />
-          </p>
+      {/* Background ambient gradient glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-0 right-1/4 -z-10 size-[450px] -translate-y-1/3 rounded-full bg-brand-amber/10 blur-[100px]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/3 right-0 -z-10 size-[380px] rounded-full bg-accent-blue/10 blur-[90px]"
+      />
 
-          <h1
-            id="hero-heading"
-            className="mt-5 text-[clamp(2.75rem,6.4vw,4.5rem)] leading-[1.02] font-extrabold tracking-[-0.035em] text-navy"
-          >
-            Smart Marketing.
-            <br />
-            <span className="underline-script text-brand-gradient relative inline-block pb-3 font-script text-[0.92em] font-normal tracking-normal">
-              Real Growth.
-            </span>
-          </h1>
+      <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+          {/* Copy column (7 cols on desktop) */}
+          <div className="flex flex-col lg:col-span-7">
+            {/* Tag Badge */}
+            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card/80 px-4 py-1.5 shadow-xs backdrop-blur-sm">
+              <span className="text-[12px] font-bold tracking-[0.14em] text-navy uppercase">
+                Lumos Digital
+              </span>
+              <span className="text-[12px] font-bold tracking-[0.14em] text-brand-gradient uppercase">
+                Media
+              </span>
+              <span className="bg-brand-gradient size-2 rounded-full" />
+            </div>
 
-          <p className="mt-6 max-w-[30rem] text-[15px] leading-[1.7] text-muted-foreground">
-            We build brands, create compelling content and drive digital growth
-            through strategy, creativity and performance-focused marketing.
-          </p>
-
-          <ul className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-            {HIGHLIGHTS.map(({ icon: Icon, label }) => (
-              <li
-                key={label}
-                className="flex items-center gap-2.5 text-[13.5px] font-medium text-navy"
-              >
-                <Icon
-                  className="size-[18px] text-accent-blue"
-                  strokeWidth={2}
-                  aria-hidden="true"
-                />
-                {label}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-            <Button
-              asChild
-              className="h-[54px] rounded-xl bg-navy px-7 text-[15px] font-semibold text-primary-foreground shadow-[0_16px_34px_-16px_var(--navy)] hover:bg-navy/90"
+            {/* Headline */}
+            <h1
+              id="hero-heading"
+              className="mt-5 text-[clamp(2.35rem,5.2vw,3.85rem)] leading-[1.08] font-extrabold tracking-[-0.035em] text-navy"
             >
-              <a href="#services">
-                Start Growing
-                <ArrowRight className="ml-2.5 size-4" strokeWidth={2.5} />
-              </a>
-            </Button>
+              Smart Marketing.
+              <br />
+              <span className="text-brand-gradient relative inline-block font-sans">
+                Real Growth.
+              </span>
+            </h1>
 
-            <Button
-              asChild
-              variant="outline"
-              className="h-[54px] rounded-full border-border bg-card px-6 text-[15px] font-semibold text-navy hover:bg-secondary"
-            >
-              <a href="#showreel">
-                <span className="mr-3 inline-flex size-8 items-center justify-center rounded-full border border-border">
-                  <Play
-                    className="size-3 fill-navy text-navy"
+            {/* Subheading */}
+            <p className="mt-5 max-w-[520px] text-[15.5px] sm:text-[16.5px] leading-[1.75] text-muted-foreground">
+              We build brands, create high-converting content, and drive digital growth
+              through strategic marketing, creative storytelling, and measurable performance.
+            </p>
+
+            {/* Feature Pills */}
+            <ul className="mt-6 flex flex-wrap items-center gap-2.5 sm:gap-3">
+              {HIGHLIGHTS.map(({ icon: Icon, label }) => (
+                <li
+                  key={label}
+                  className="inline-flex items-center gap-2 rounded-xl border border-border/80 bg-card/60 px-3.5 py-2 text-[13px] font-semibold text-navy shadow-2xs backdrop-blur-xs"
+                >
+                  <Icon
+                    className="size-4 text-accent-blue"
+                    strokeWidth={2.2}
                     aria-hidden="true"
                   />
-                </span>
-                Explore Our Work
-              </a>
-            </Button>
-          </div>
-
-          <div className="mt-10 flex items-center gap-4">
-            <ul className="flex items-center">
-              {CLIENT_AVATARS.map((avatar, index) => (
-                <li
-                  key={avatar.src}
-                  className={index === 0 ? "" : "-ml-3"}
-                  style={{ zIndex: CLIENT_AVATARS.length - index }}
-                >
-                  <img
-                    src={avatar.src}
-                    alt={avatar.alt}
-                    width={128}
-                    height={128}
-                    loading="lazy"
-                    className="size-11 rounded-full border-2 border-background object-cover"
-                  />
+                  {label}
                 </li>
               ))}
             </ul>
-            <div className="leading-tight">
-              <p className="text-[14.5px] font-bold text-navy">
-                Brands Growing With Lumos
-              </p>
-              <p className="mt-1 text-[13px] text-muted-foreground">
-                Strategy · Content · Performance
-              </p>
+
+            {/* CTA Buttons */}
+            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
+              <Button
+                asChild
+                className="h-[52px] rounded-xl bg-navy px-8 text-[15px] font-semibold text-primary-foreground shadow-[0_14px_30px_-12px_var(--navy)] hover:bg-navy/90 active:scale-[0.99]"
+              >
+                <Link to="/contact">
+                  Start Growing
+                  <ArrowRight className="ml-2.5 size-4" strokeWidth={2.5} />
+                </Link>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                className="h-[52px] rounded-xl border-border bg-card px-6 text-[15px] font-semibold text-navy hover:bg-secondary active:scale-[0.99]"
+              >
+                <a href="#work" className="inline-flex items-center">
+                  <span className="mr-2.5 inline-flex size-7 items-center justify-center rounded-lg bg-secondary text-navy">
+                    <Play
+                      className="size-3 fill-navy text-navy"
+                      aria-hidden="true"
+                    />
+                  </span>
+                  Explore Our Work
+                </a>
+              </Button>
+            </div>
+
+            {/* Social Proof & Client Avatars */}
+            <div className="mt-10 flex flex-wrap items-center gap-4 pt-4 border-t border-border/60">
+              <ul className="flex items-center">
+                {CLIENT_AVATARS.map((avatar, index) => (
+                  <li
+                    key={avatar.src}
+                    className={index === 0 ? "" : "-ml-3"}
+                    style={{ zIndex: CLIENT_AVATARS.length - index }}
+                  >
+                    <img
+                      src={avatar.src}
+                      alt={avatar.alt}
+                      width={96}
+                      height={96}
+                      loading="lazy"
+                      className="size-10 sm:size-11 rounded-full border-2 border-card object-cover shadow-sm"
+                    />
+                  </li>
+                ))}
+              </ul>
+
+              <div className="leading-tight">
+                <div className="flex items-center gap-1.5 text-amber-500">
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="size-3.5 fill-current" />
+                    ))}
+                  </div>
+                  <span className="text-[12.5px] font-bold text-navy">5.0</span>
+                </div>
+                <p className="mt-1 text-[13px] font-bold text-navy">
+                  250+ Brands Scaled With Lumos
+                </p>
+                <p className="text-[12px] text-muted-foreground">
+                  Strategy · Content · Performance
+                </p>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Visual column */}
-        <div className="order-1 lg:order-2">
-          <div className="relative overflow-hidden bg-soft-gray lg:rounded-l-[2.5rem]">
-            <img
-              src={heroStudio}
-              alt="Lumos Digital studio setup with softbox lights, a camera on a tripod and the brand's 3D logo on a podium"
-              width={1200}
-              height={1008}
-              fetchPriority="high"
-              decoding="async"
-              className="h-[300px] w-full object-cover object-center sm:h-[400px] lg:h-[520px] xl:h-[560px]"
-            />
+          {/* Visual column (5 cols on desktop) */}
+          <div className="relative lg:col-span-5">
+            <div className="relative mx-auto max-w-[500px] lg:max-w-none">
+              {/* Card Container Frame */}
+              <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-b from-card to-secondary/30 p-2.5 sm:p-3 shadow-[0_24px_60px_-24px_rgba(22,35,103,0.18)]">
+                <div className="relative overflow-hidden rounded-2xl bg-muted/40 aspect-[4/3.3] sm:aspect-[4/3.4]">
+                  <img
+                    src={heroStudio}
+                    alt="Lumos Digital production studio with camera, lighting setup and 3D brand installation"
+                    width={1000}
+                    height={850}
+                    fetchPriority="high"
+                    decoding="async"
+                    className="size-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                  />
+                  {/* Subtle inner overlay vignette */}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/30 via-transparent to-transparent opacity-60" />
+                </div>
+
+                {/* Floating Glassmorphism Badge 1: Top Right */}
+                <div className="absolute top-6 right-6 hidden sm:flex items-center gap-2 rounded-2xl border border-card/60 bg-card/90 px-3.5 py-2 shadow-lg backdrop-blur-md">
+                  <span className="bg-brand-gradient flex size-7 items-center justify-center rounded-xl text-navy">
+                    <Sparkles className="size-4" />
+                  </span>
+                  <div className="leading-tight">
+                    <p className="text-[11px] font-extrabold text-navy uppercase tracking-wide">
+                      Creative Studio
+                    </p>
+                    <p className="text-[10px] font-medium text-muted-foreground">
+                      Pondicherry & Beyond
+                    </p>
+                  </div>
+                </div>
+
+                {/* Floating Glassmorphism Card 2: Bottom Left */}
+                <div className="absolute bottom-6 left-6 flex items-center gap-3 rounded-2xl border border-card/60 bg-card/95 p-3 shadow-xl backdrop-blur-md">
+                  <div className="flex size-10 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600">
+                    <TrendingUp className="size-5" />
+                  </div>
+                  <div className="leading-tight">
+                    <p className="text-[14px] font-black text-navy">
+                      +148% Avg. Growth
+                    </p>
+                    <p className="text-[11px] font-medium text-muted-foreground">
+                      Measurable Client ROI
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Decorative accent element */}
+              <div
+                aria-hidden="true"
+                className="absolute -bottom-4 -right-4 -z-10 size-48 rounded-full bg-brand-coral/15 blur-2xl"
+              />
+            </div>
           </div>
         </div>
       </div>

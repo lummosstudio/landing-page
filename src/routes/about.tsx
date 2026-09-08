@@ -28,6 +28,9 @@ import {
   Rocket,
   Store,
   Mic,
+  Smile,
+  Heart,
+  Trophy,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -37,7 +40,7 @@ import { Button } from "@/components/ui/button";
 import aboutHero from "@/assets/about-hero.webp";
 import aboutStory from "@/assets/about-story.webp";
 
-const TITLE = "About Lumos Digital Media | Marketing Agency";
+const TITLE = "About Lumos Digital Media | Creative Growth Agency";
 const DESCRIPTION =
   "Meet Lumos Digital Media, a creative digital marketing and branding agency helping businesses grow through strategy, content, advertising and brand building.";
 
@@ -60,82 +63,88 @@ export const Route = createFileRoute("/about")({
   component: AboutPage,
 });
 
+const STATS = [
+  { icon: Trophy, value: "5+ Years", label: "Driving Growth" },
+  { icon: Smile, value: "250+", label: "Projects Completed" },
+  { icon: Heart, value: "98%", label: "Client Retention" },
+];
+
 const WHAT_WE_DO: { n: string; title: string; text: string; icon: LucideIcon }[] = [
   {
     n: "01",
     title: "Digital Marketing",
-    text: "Connected digital strategies designed to improve visibility, engagement, leads and growth.",
+    text: "Connected digital strategies designed to improve visibility, engagement, qualified leads and revenue.",
     icon: Camera,
   },
   {
     n: "02",
     title: "Social Media",
-    text: "Purposeful social strategies and platform-ready content that build active communities.",
+    text: "Purposeful social strategies and platform-ready content that build active, loyal communities.",
     icon: Video,
   },
   {
     n: "03",
     title: "Creative Content",
-    text: "Original reels, videos, campaigns and brand content designed to earn attention.",
+    text: "Original reels, videos, commercial shoots and brand content designed to capture and hold attention.",
     icon: Clapperboard,
   },
   {
     n: "04",
     title: "Paid Advertising",
-    text: "Focused Meta and Google campaigns that reach the right audience and generate leads.",
+    text: "Targeted Meta and Google campaigns that reach high-intent audiences and maximize ROI.",
     icon: Scissors,
   },
   {
     n: "05",
     title: "SEO & Local Growth",
-    text: "Search and local marketing that help customers discover and choose your business.",
+    text: "Search engine and local presence optimization that help customers easily discover and trust your business.",
     icon: UserRound,
   },
   {
     n: "06",
-    title: "Branding",
-    text: "Distinctive identities and creative systems that make brands clear, trusted and memorable.",
+    title: "Branding & Identity",
+    text: "Distinctive identities and design systems that make brands clear, reputable and unforgettable.",
     icon: Sparkles,
   },
 ];
 
 const JOURNEY: { title: string; text: string; icon: LucideIcon }[] = [
-  { title: "Discover", text: "We understand your business, audience, goals and market.", icon: Lightbulb },
-  { title: "Strategy", text: "We define the channels, message and plan for growth.", icon: CalendarCheck },
-  { title: "Create", text: "We develop content, campaigns and brand assets with purpose.", icon: Aperture },
-  { title: "Launch", text: "We distribute every campaign across the right platforms.", icon: Wand2 },
-  { title: "Optimize", text: "We review performance and improve what drives results.", icon: PackageCheck },
+  { title: "Discover", text: "We understand your business, audience, goals and competitive space.", icon: Lightbulb },
+  { title: "Strategy", text: "We define the roadmap, content angles and distribution channels.", icon: CalendarCheck },
+  { title: "Create", text: "We shoot, write, design and craft high-impact brand assets.", icon: Aperture },
+  { title: "Launch", text: "We distribute campaigns across targeted channels with precision.", icon: Wand2 },
+  { title: "Optimize", text: "We analyze performance metrics and continuously scale results.", icon: PackageCheck },
 ];
 
 const WHY: { title: string; text: string; icon: LucideIcon }[] = [
   {
     title: "Custom Strategy",
-    text: "Every business gets a focused strategy shaped around its goals, audience and market.",
+    text: "Every business receives a tailored roadmap built around specific goals and audience behaviors.",
     icon: Brain,
   },
   {
-    title: "Creative Production",
-    text: "Ideas, scripts, creatives, content and editing work together under one creative system.",
+    title: "End-to-End Production",
+    text: "Scripts, cinematography, design, editing, and ad execution all unified under one roof.",
     icon: Settings2,
   },
   {
     title: "Performance Focus",
-    text: "We focus on the outcomes that matter: visibility, engagement, qualified leads and growth.",
+    text: "We prioritize real business outcomes: brand trust, customer acquisition, and measurable ROI.",
     icon: ScanSearch,
   },
   {
-    title: "Business Understanding",
-    text: "We connect creative decisions to your wider business priorities and customer journey.",
+    title: "Deep Business Insight",
+    text: "We connect creative ideas to commercial realities and long-term customer journeys.",
     icon: TrendingUp,
   },
   {
-    title: "Trend-Aware",
-    text: "We adapt content and campaigns as platforms, formats and audience behaviour evolve.",
+    title: "Platform-First Trends",
+    text: "We stay ahead of algorithm shifts and creative format trends on Instagram, YouTube and Google.",
     icon: Layers,
   },
   {
-    title: "Long-Term Partnership",
-    text: "We work as an invested growth partner, not simply a posting or delivery service.",
+    title: "Dedicated Partnership",
+    text: "We act as an invested extension of your team, not just another outsourcing agency.",
     icon: LifeBuoy,
   },
 ];
@@ -144,20 +153,20 @@ const INDUSTRIES: { label: string; icon: LucideIcon }[] = [
   { label: "Restaurants & Cafés", icon: UtensilsCrossed },
   { label: "Hotels & Resorts", icon: Hotel },
   { label: "Real Estate", icon: Building2 },
-  { label: "Solar & Energy", icon: Sun },
-  { label: "Construction", icon: HardHat },
+  { label: "Solar & Clean Energy", icon: Sun },
+  { label: "Construction & Infra", icon: HardHat },
   { label: "Travel & Hospitality", icon: Plane },
   { label: "Fashion & Lifestyle", icon: Shirt },
-  { label: "Startups", icon: Rocket },
-  { label: "Local Businesses", icon: Store },
-  { label: "Founders & Personal Brands", icon: Mic },
+  { label: "Tech Startups", icon: Rocket },
+  { label: "Retail & Commerce", icon: Store },
+  { label: "Personal Brands", icon: Mic },
 ];
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[11.5px] font-bold tracking-[0.16em] text-navy uppercase">
+    <div className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card/80 px-3.5 py-1 text-[11.5px] font-bold tracking-[0.14em] text-navy uppercase shadow-2xs backdrop-blur-sm">
       {children}
-    </p>
+    </div>
   );
 }
 
@@ -167,168 +176,253 @@ function AboutPage() {
       <SiteHeader activeItem="About" />
 
       <main>
-        {/* HERO */}
+        {/* HERO SECTION */}
         <section
           aria-labelledby="about-hero-heading"
-          className="overflow-hidden bg-background"
+          className="relative overflow-hidden bg-background py-8 sm:py-12 lg:py-16 xl:py-20"
         >
-          <div className="mx-auto grid max-w-[1440px] items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-            <div className="order-2 px-5 pb-14 sm:px-8 lg:order-1 lg:py-20 lg:pl-[max(2rem,calc((100vw-1240px)/2))] lg:pr-8">
-              <SectionLabel>
-                 About <span className="text-brand-gradient">Lumos Digital Media</span>
-              </SectionLabel>
+          {/* Ambient blur glows */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-0 right-1/4 -z-10 size-[450px] -translate-y-1/3 rounded-full bg-brand-amber/10 blur-[100px]"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute top-1/3 right-0 -z-10 size-[380px] rounded-full bg-accent-blue/10 blur-[90px]"
+          />
 
-              <h1
-                id="about-hero-heading"
-                className="mt-5 text-[clamp(2.25rem,5.4vw,3.75rem)] leading-[1.05] font-extrabold tracking-[-0.035em] text-navy"
-              >
-                 We Build Brands
-                <br />
-                 That Are Ready
-                <br />
-                 <span className="text-brand-gradient">To Grow.</span>
-              </h1>
+          <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-14">
+              {/* Copy Column (7 cols) */}
+              <div className="flex flex-col lg:col-span-7">
+                <SectionLabel>
+                  About <span className="text-brand-gradient">Lumos Digital Media</span>
+                </SectionLabel>
 
-              <p className="mt-6 max-w-[34rem] text-[15px] leading-[1.8] text-muted-foreground">
-                 Lumos Digital Media is a creative digital marketing and branding
-                 agency helping businesses grow through smart strategy, compelling
-                 content and performance-focused campaigns.
-              </p>
-
-              <div className="mt-9 flex flex-wrap items-center gap-4">
-                <Button
-                  asChild
-                  className="h-[54px] w-full rounded-xl bg-navy px-7 text-[15px] font-semibold text-primary-foreground shadow-[0_16px_34px_-16px_var(--navy)] hover:bg-navy/90 sm:w-auto"
+                <h1
+                  id="about-hero-heading"
+                  className="mt-5 text-[clamp(2.35rem,5.2vw,3.85rem)] leading-[1.08] font-extrabold tracking-[-0.035em] text-navy"
                 >
-                  <Link to="/contact">
-                    Start Your Project
-                    <ArrowRight className="ml-2.5 size-4" strokeWidth={2.5} />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="h-[54px] w-full rounded-full border-border bg-card px-7 text-[15px] font-semibold text-navy hover:bg-secondary sm:w-auto"
-                >
-                  <a href="/#works">
-                    View Our Work
-                    <ArrowRight className="ml-2.5 size-4" strokeWidth={2.5} />
-                  </a>
-                </Button>
+                  We Build Brands
+                  <br />
+                  That Are Ready
+                  <br />
+                  <span className="text-brand-gradient relative inline-block">
+                    To Grow.
+                  </span>
+                </h1>
+
+                <p className="mt-5 max-w-[540px] text-[15.5px] sm:text-[16.5px] leading-[1.75] text-muted-foreground">
+                  Lumos Digital Media is a creative digital marketing and branding agency
+                  helping businesses earn attention, build authority, and achieve sustainable
+                  revenue through smart strategy and premium storytelling.
+                </p>
+
+                {/* Stat Chips */}
+                <div className="mt-7 flex flex-wrap items-center gap-3">
+                  {STATS.map(({ icon: Icon, value, label }) => (
+                    <div
+                      key={label}
+                      className="inline-flex items-center gap-2.5 rounded-xl border border-border/80 bg-card/70 px-4 py-2 shadow-2xs backdrop-blur-xs"
+                    >
+                      <Icon className="size-4 text-brand-amber" strokeWidth={2} />
+                      <span className="text-[13.5px] font-extrabold text-navy">{value}</span>
+                      <span className="text-[12.5px] text-muted-foreground">{label}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* CTAs */}
+                <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
+                  <Button
+                    asChild
+                    className="h-[52px] rounded-xl bg-navy px-8 text-[15px] font-semibold text-primary-foreground shadow-[0_14px_30px_-12px_var(--navy)] hover:bg-navy/90 active:scale-[0.99]"
+                  >
+                    <Link to="/contact">
+                      Start Your Project
+                      <ArrowRight className="ml-2.5 size-4" strokeWidth={2.5} />
+                    </Link>
+                  </Button>
+
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="h-[52px] rounded-xl border-border bg-card px-6 text-[15px] font-semibold text-navy hover:bg-secondary active:scale-[0.99]"
+                  >
+                    <a href="/#works">
+                      View Our Work
+                      <ArrowRight className="ml-2.5 size-4" strokeWidth={2.5} />
+                    </a>
+                  </Button>
+                </div>
               </div>
-            </div>
 
-            <div className="order-1 lg:order-2">
-              <div className="relative overflow-hidden bg-soft-gray lg:rounded-l-[2.5rem]">
-                <img
-                  src={aboutHero}
-                  alt="Lumos Digital studio in Pondicherry with a cinema camera on a tripod and softbox lighting"
-                  width={1200}
-                  height={1000}
-                  fetchPriority="high"
-                  decoding="async"
-                  className="h-[280px] w-full object-cover sm:h-[380px] lg:h-[540px]"
-                />
+              {/* Visual Showcase (5 cols) */}
+              <div className="relative lg:col-span-5">
+                <div className="relative mx-auto max-w-[500px] lg:max-w-none">
+                  <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-b from-card to-secondary/30 p-2.5 sm:p-3 shadow-[0_24px_60px_-24px_rgba(22,35,103,0.18)]">
+                    <div className="relative overflow-hidden rounded-2xl bg-muted/40 aspect-[4/3.3] sm:aspect-[4/3.4]">
+                      <img
+                        src={aboutHero}
+                        alt="Lumos Digital studio cinema camera and lighting gear setup"
+                        width={1000}
+                        height={850}
+                        fetchPriority="high"
+                        decoding="async"
+                        className="size-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/30 via-transparent to-transparent opacity-60" />
+                    </div>
+
+                    {/* Floating Glass Badges */}
+                    <div className="absolute top-6 right-6 hidden sm:flex items-center gap-2 rounded-2xl border border-card/60 bg-card/90 px-3.5 py-2 shadow-lg backdrop-blur-md">
+                      <span className="bg-brand-gradient flex size-7 items-center justify-center rounded-xl text-navy">
+                        <Sparkles className="size-4" />
+                      </span>
+                      <div className="leading-tight">
+                        <p className="text-[11px] font-extrabold text-navy uppercase tracking-wide">
+                          Strategic Agency
+                        </p>
+                        <p className="text-[10px] font-medium text-muted-foreground">
+                          Creative & ROI-Driven
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="absolute bottom-6 left-6 flex items-center gap-3 rounded-2xl border border-card/60 bg-card/95 p-3 shadow-xl backdrop-blur-md">
+                      <div className="flex size-10 items-center justify-center rounded-xl bg-accent-blue/15 text-navy">
+                        <Camera className="size-5" />
+                      </div>
+                      <div className="leading-tight">
+                        <p className="text-[14px] font-black text-navy">
+                          Production House
+                        </p>
+                        <p className="text-[11px] font-medium text-muted-foreground">
+                          In-House Film & Design
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* OUR STORY */}
-        <section aria-labelledby="story-heading" className="py-16 lg:py-24">
-          <div className="mx-auto grid max-w-[1240px] items-center gap-10 px-5 sm:px-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
-            <div className="relative">
-              <img
-                src={aboutStory}
-                alt="Photographer reviewing images on a professional camera during a Lumos Digital shoot"
-                width={1000}
-                height={1100}
-                loading="lazy"
-                className="h-[320px] w-full rounded-3xl object-cover sm:h-[440px] lg:h-[520px]"
-              />
-              <span
-                aria-hidden="true"
-                className="absolute -top-3 -left-3 hidden size-16 rounded-tl-3xl border-t-[3px] border-l-[3px] border-brand-amber sm:block"
-              />
-              <span
-                aria-hidden="true"
-                className="absolute -right-3 -bottom-3 hidden size-16 rounded-br-3xl border-r-[3px] border-b-[3px] border-accent-blue sm:block"
-              />
-            </div>
+        {/* OUR STORY SECTION */}
+        <section aria-labelledby="story-heading" className="py-14 sm:py-16 lg:py-24 bg-card/40 border-y border-border/40">
+          <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
+              {/* Image Frame (5 cols) */}
+              <div className="lg:col-span-5">
+                <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-b from-card to-secondary/30 p-2.5 sm:p-3 shadow-lg">
+                  <div className="overflow-hidden rounded-2xl aspect-[4/3.8] sm:aspect-[4/3.5] lg:aspect-[4/4.5]">
+                    <img
+                      src={aboutStory}
+                      alt="Photographer reviewing images on camera during a Lumos shoot"
+                      width={900}
+                      height={1000}
+                      loading="lazy"
+                      className="size-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                    />
+                  </div>
+                </div>
+              </div>
 
-            <div>
-              <SectionLabel>
-                Our <span className="text-brand-gradient">Story</span>
-              </SectionLabel>
-              <h2
-                id="story-heading"
-                className="mt-3 text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
-              >
-                 Turning Ambition Into{" "}
-                 <span className="text-brand-gradient">Digital Growth.</span>
-              </h2>
+              {/* Text Column (7 cols) */}
+              <div className="flex flex-col lg:col-span-7">
+                <SectionLabel>
+                  Our <span className="text-brand-gradient">Story</span>
+                </SectionLabel>
+                <h2
+                  id="story-heading"
+                  className="mt-4 text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
+                >
+                  Turning Ambition Into{" "}
+                  <span className="text-brand-gradient">Digital Growth.</span>
+                </h2>
 
-              <div className="mt-6 space-y-5 text-[15px] leading-[1.85] text-muted-foreground">
-                <p>
-                   Lumos Digital Media was built around a simple idea — smart
-                   marketing and strong creativity can transform a business.
-                </p>
-                <p>
-                   From brand strategy to social content and paid campaigns, every
-                   idea should have a clear purpose.
-                </p>
-                <p>
-                   We work with businesses, founders and personal brands to turn
-                   ideas into focused marketing that communicates clearly, reaches
-                   the right audience and creates a stronger digital presence.
-                </p>
-                <p>
-                   We combine strategic thinking, brand building, creative content
-                   and performance marketing to create work that earns attention,
-                   builds trust and supports long-term growth.
-                </p>
+                <div className="mt-5 space-y-4 text-[15px] sm:text-[15.5px] leading-[1.8] text-muted-foreground">
+                  <p>
+                    Lumos Digital Media was built around a singular philosophy: smart marketing
+                    and bold creativity can radically transform a business.
+                  </p>
+                  <p>
+                    From high-conversion ad campaigns to cinematic reels and comprehensive brand
+                    identity systems, every asset we produce is crafted with clear intent and
+                    commercial purpose.
+                  </p>
+                  <p>
+                    We partner with ambitious founders, established hospitality brands, and growing
+                    enterprises across South India to turn bold vision into measurable growth.
+                  </p>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-border/60 flex flex-wrap items-center gap-6">
+                  <div>
+                    <p className="text-[26px] font-black text-navy">10M+</p>
+                    <p className="text-[12.5px] font-medium text-muted-foreground">Views & Impressions</p>
+                  </div>
+                  <div className="h-10 w-px bg-border/80 hidden sm:block" />
+                  <div>
+                    <p className="text-[26px] font-black text-navy">98%</p>
+                    <p className="text-[12.5px] font-medium text-muted-foreground">Satisfaction Score</p>
+                  </div>
+                  <div className="h-10 w-px bg-border/80 hidden sm:block" />
+                  <div>
+                    <p className="text-[26px] font-black text-navy">100%</p>
+                    <p className="text-[12.5px] font-medium text-muted-foreground">In-House Production</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* WHAT WE DO */}
+        {/* WHAT WE DO SECTION */}
         <section
           aria-labelledby="what-we-do-heading"
-          className="bg-soft-gray py-16 lg:py-24"
+          className="bg-soft-gray py-14 sm:py-16 lg:py-24"
         >
-          <div className="mx-auto max-w-[1240px] px-5 sm:px-8">
-            <SectionLabel>
-              What <span className="text-brand-gradient">We</span> Do
-            </SectionLabel>
-            <h2
-              id="what-we-do-heading"
-              className="mt-3 max-w-[24rem] text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
-            >
-               Everything Your Brand Needs{" "}
-               <span className="text-brand-gradient">To Grow.</span>
-            </h2>
+          <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+            <div className="max-w-xl">
+              <SectionLabel>
+                What <span className="text-brand-gradient">We</span> Do
+              </SectionLabel>
+              <h2
+                id="what-we-do-heading"
+                className="mt-4 text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
+              >
+                Everything Your Brand Needs{" "}
+                <span className="text-brand-gradient">To Scale.</span>
+              </h2>
+            </div>
 
-            <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-8 sm:mt-10 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {WHAT_WE_DO.map(({ n, title, text, icon: Icon }) => (
                 <li key={n}>
-                  <article className="group flex h-full flex-col rounded-3xl border border-border bg-card p-7 transition-shadow hover:shadow-[0_26px_60px_-38px_var(--navy)]">
-                    <div className="flex items-start justify-between gap-4">
-                      <Icon
-                        className="size-7 shrink-0 text-brand-amber"
-                        strokeWidth={1.6}
-                        aria-hidden="true"
-                      />
-                      <span className="text-[13px] font-bold tracking-[0.1em] text-muted-foreground/60">
-                        {n}
-                      </span>
+                  <article className="group flex h-full flex-col justify-between rounded-3xl border border-border bg-card p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-30px_var(--navy)]">
+                    <div>
+                      <div className="flex items-center justify-between">
+                        <div className="inline-flex size-12 items-center justify-center rounded-2xl bg-secondary text-brand-amber">
+                          <Icon className="size-6" strokeWidth={1.8} aria-hidden="true" />
+                        </div>
+                        <span className="text-[13px] font-black text-muted-foreground/40 font-mono">
+                          {n}
+                        </span>
+                      </div>
+                      <h3 className="mt-6 text-[17px] font-bold tracking-tight text-navy group-hover:text-brand-coral transition-colors">
+                        {title}
+                      </h3>
+                      <p className="mt-2.5 text-[14px] leading-[1.7] text-muted-foreground">
+                        {text}
+                      </p>
                     </div>
-                    <h3 className="mt-7 text-[17px] font-bold tracking-[-0.01em] text-navy">
-                      {title}
-                    </h3>
-                    <p className="mt-2.5 text-[13.5px] leading-[1.75] text-muted-foreground">
-                      {text}
-                    </p>
+
+                    <div className="mt-6 pt-4 border-t border-border/40 flex items-center gap-2 text-[13px] font-bold text-navy group-hover:text-brand-coral transition-colors">
+                      <span>Explore Service</span>
+                      <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+                    </div>
                   </article>
                 </li>
               ))}
@@ -336,57 +430,47 @@ function AboutPage() {
           </div>
         </section>
 
-        {/* CAPABILITIES / JOURNEY */}
+        {/* JOURNEY / CAPABILITIES */}
         <section
           aria-labelledby="capabilities-heading"
-          className="py-16 lg:py-24"
+          className="py-14 sm:py-16 lg:py-24 bg-background"
         >
-          <div className="mx-auto max-w-[1240px] px-5 sm:px-8">
-            <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
               <div>
                 <SectionLabel>
                   Our <span className="text-brand-gradient">Capabilities</span>
                 </SectionLabel>
                 <h2
                   id="capabilities-heading"
-                  className="mt-3 text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
+                  className="mt-4 text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
                 >
-                   From Insight To{" "}
-                   <span className="text-brand-gradient">Impact.</span>
+                  From Insight To{" "}
+                  <span className="text-brand-gradient">Impact.</span>
                 </h2>
               </div>
-              <p className="max-w-[24rem] text-[14px] leading-[1.8] text-muted-foreground">
-                 A connected marketing process keeps strategy, creativity and
-                 performance moving toward the same business goal.
+              <p className="max-w-md text-[14.5px] leading-[1.75] text-muted-foreground">
+                Our seamless 5-step growth flywheel keeps strategy, creative production,
+                and paid performance synchronized toward one clear business objective.
               </p>
             </div>
 
-            <ol className="relative mt-12 grid gap-6 lg:grid-cols-5">
-              <span
-                aria-hidden="true"
-                className="absolute top-9 right-8 left-8 hidden border-t-2 border-dashed border-border lg:block"
-              />
+            <ol className="mt-10 sm:mt-12 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
               {JOURNEY.map(({ title, text, icon: Icon }, index) => (
-                <li key={title} className="relative">
-                  <div className="flex items-center gap-4 lg:flex-col lg:items-start">
-                    <span className="relative z-10 inline-flex size-[72px] shrink-0 items-center justify-center rounded-2xl border border-border bg-card shadow-[0_18px_40px_-30px_var(--navy)]">
-                      <Icon
-                        className="size-6 text-navy"
-                        strokeWidth={1.6}
-                        aria-hidden="true"
-                      />
-                      <span className="bg-brand-gradient absolute -top-2 -right-2 inline-flex size-6 items-center justify-center rounded-full text-[10.5px] font-bold text-navy">
+                <li key={title}>
+                  <div className="flex flex-col h-full rounded-2xl border border-border bg-card p-5 shadow-2xs">
+                    <div className="flex items-center justify-between">
+                      <div className="inline-flex size-11 items-center justify-center rounded-xl bg-secondary text-navy">
+                        <Icon className="size-5" strokeWidth={1.8} aria-hidden="true" />
+                      </div>
+                      <span className="bg-brand-gradient flex size-6 items-center justify-center rounded-full text-[11px] font-black text-navy shadow-xs">
                         {index + 1}
                       </span>
-                    </span>
-                    <div className="min-w-0 lg:mt-6">
-                      <h3 className="text-[15.5px] font-bold text-navy">
-                        {title}
-                      </h3>
-                      <p className="mt-1.5 text-[13px] leading-[1.7] text-muted-foreground">
-                        {text}
-                      </p>
                     </div>
+                    <h3 className="mt-4 text-[15.5px] font-bold text-navy">{title}</h3>
+                    <p className="mt-1.5 text-[13px] leading-[1.65] text-muted-foreground">
+                      {text}
+                    </p>
                   </div>
                 </li>
               ))}
@@ -395,34 +479,30 @@ function AboutPage() {
         </section>
 
         {/* WHY LUMOS */}
-        <section aria-labelledby="why-heading" className="bg-soft-gray py-16 lg:py-24">
-          <div className="mx-auto max-w-[1240px] px-5 sm:px-8">
-            <SectionLabel>
-              Why <span className="text-brand-gradient">Lumos</span>
-            </SectionLabel>
-            <h2
-              id="why-heading"
-              className="mt-3 max-w-[28rem] text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
-            >
-              Why Brands{" "}
-              <span className="text-brand-gradient">Choose Lumos</span>
-            </h2>
+        <section aria-labelledby="why-heading" className="bg-soft-gray py-14 sm:py-16 lg:py-24">
+          <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+            <div className="max-w-xl">
+              <SectionLabel>
+                Why <span className="text-brand-gradient">Lumos</span>
+              </SectionLabel>
+              <h2
+                id="why-heading"
+                className="mt-4 text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
+              >
+                Why Brands{" "}
+                <span className="text-brand-gradient">Choose Lumos</span>
+              </h2>
+            </div>
 
-            <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="mt-8 sm:mt-10 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {WHY.map(({ title, text, icon: Icon }) => (
                 <li key={title}>
-                  <article className="flex h-full flex-col rounded-3xl border border-border bg-card p-7 transition-shadow hover:shadow-[0_26px_60px_-38px_var(--navy)]">
-                    <span className="inline-flex size-12 items-center justify-center rounded-xl bg-secondary">
-                      <Icon
-                        className="size-5 text-accent-blue"
-                        strokeWidth={1.8}
-                        aria-hidden="true"
-                      />
+                  <article className="flex h-full flex-col rounded-3xl border border-border bg-card p-6 sm:p-7 shadow-2xs transition-shadow hover:shadow-md">
+                    <span className="inline-flex size-12 items-center justify-center rounded-xl bg-secondary text-accent-blue">
+                      <Icon className="size-5" strokeWidth={2} aria-hidden="true" />
                     </span>
-                    <h3 className="mt-6 text-[16.5px] font-bold text-navy">
-                      {title}
-                    </h3>
-                    <p className="mt-2.5 text-[13.5px] leading-[1.75] text-muted-foreground">
+                    <h3 className="mt-5 text-[16.5px] font-bold text-navy">{title}</h3>
+                    <p className="mt-2 text-[13.5px] leading-[1.75] text-muted-foreground">
                       {text}
                     </p>
                   </article>
@@ -432,32 +512,34 @@ function AboutPage() {
           </div>
         </section>
 
-        {/* WHO WE WORK WITH */}
-        <section aria-labelledby="industries-heading" className="py-16 lg:py-24">
-          <div className="mx-auto max-w-[1240px] px-5 sm:px-8">
-            <SectionLabel>
-              Who <span className="text-brand-gradient">We Work With</span>
-            </SectionLabel>
-            <h2
-              id="industries-heading"
-              className="mt-3 max-w-[26rem] text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
-            >
-              Built For Brands Of{" "}
-              <span className="text-brand-gradient">All Sizes</span>
-            </h2>
+        {/* INDUSTRIES WE SERVE */}
+        <section aria-labelledby="industries-heading" className="py-14 sm:py-16 lg:py-24 bg-background">
+          <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+            <div className="max-w-xl">
+              <SectionLabel>
+                Who <span className="text-brand-gradient">We Work With</span>
+              </SectionLabel>
+              <h2
+                id="industries-heading"
+                className="mt-4 text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
+              >
+                Built For Brands Of{" "}
+                <span className="text-brand-gradient">All Scales</span>
+              </h2>
+            </div>
 
-            <ul className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+            <ul className="mt-8 sm:mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
               {INDUSTRIES.map(({ label, icon: Icon }) => (
                 <li
                   key={label}
-                  className="flex min-w-0 items-center gap-3 rounded-2xl border border-border bg-card px-4 py-4 transition-colors hover:border-brand-amber"
+                  className="flex min-w-0 items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-all hover:border-brand-amber hover:shadow-xs"
                 >
                   <Icon
                     className="size-5 shrink-0 text-brand-coral"
-                    strokeWidth={1.7}
+                    strokeWidth={1.8}
                     aria-hidden="true"
                   />
-                  <span className="min-w-0 text-[13px] leading-[1.4] font-semibold text-navy">
+                  <span className="min-w-0 text-[13px] font-semibold text-navy leading-tight">
                     {label}
                   </span>
                 </li>
@@ -466,60 +548,33 @@ function AboutPage() {
           </div>
         </section>
 
-        {/* PHILOSOPHY */}
-        <section
-          aria-labelledby="philosophy-heading"
-          className="bg-soft-gray py-20 lg:py-28"
-        >
-          <div className="mx-auto max-w-[1240px] px-5 text-center sm:px-8">
-            <SectionLabel>
-              Our <span className="text-brand-gradient">Philosophy</span>
-            </SectionLabel>
-            <h2
-              id="philosophy-heading"
-              className="mx-auto mt-6 max-w-[52rem] text-[clamp(1.85rem,5vw,3.5rem)] leading-[1.12] font-extrabold tracking-[-0.035em] text-navy"
-            >
-               Smart marketing gets{" "}
-              <span className="text-brand-gradient">attention.</span>
-              <br />
-               Strong brands
-              <br />
-               earn <span className="text-brand-gradient">trust.</span>
-            </h2>
-            <span
-              aria-hidden="true"
-              className="bg-brand-gradient mx-auto mt-10 block h-[3px] w-24 rounded-full"
-            />
-          </div>
-        </section>
-
-        {/* FINAL CTA */}
-        <section aria-labelledby="about-cta-heading" className="bg-background py-16 lg:py-20">
-          <div className="mx-auto max-w-[1240px] px-5 sm:px-8">
-            <div className="relative overflow-hidden rounded-3xl bg-navy px-6 py-16 text-center sm:px-10 lg:py-20">
-              <span
+        {/* FINAL CTA BANNER */}
+        <section aria-labelledby="about-cta-heading" className="bg-background pb-12 sm:pb-16 lg:pb-20">
+          <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
+            <div className="relative overflow-hidden rounded-3xl bg-navy px-6 py-14 text-center sm:px-10 lg:py-18">
+              <div
                 aria-hidden="true"
-                className="pointer-events-none absolute -top-24 -left-16 size-72 rounded-full bg-brand-amber/25 blur-3xl"
+                className="pointer-events-none absolute -top-24 -left-16 size-72 rounded-full bg-brand-amber/20 blur-3xl"
               />
-              <span
+              <div
                 aria-hidden="true"
-                className="pointer-events-none absolute -right-16 -bottom-24 size-72 rounded-full bg-accent-blue/25 blur-3xl"
+                className="pointer-events-none absolute -right-16 -bottom-24 size-72 rounded-full bg-accent-blue/20 blur-3xl"
               />
 
-              <div className="relative">
+              <div className="relative max-w-2xl mx-auto">
                 <h2
                   id="about-cta-heading"
-                  className="mx-auto max-w-[30rem] text-[clamp(1.85rem,4.4vw,3rem)] leading-[1.1] font-extrabold tracking-[-0.035em] text-primary-foreground"
+                  className="text-[clamp(1.85rem,4.4vw,2.85rem)] leading-[1.12] font-extrabold tracking-[-0.035em] text-primary-foreground"
                 >
-                   Ready To Build A Brand That Grows?
+                  Ready To Build A Brand That Grows?
                 </h2>
-                <p className="mx-auto mt-5 max-w-[32rem] text-[14.5px] leading-[1.8] text-primary-foreground/70">
-                   Let&apos;s turn your goals into a digital presence that earns
-                   attention, trust and meaningful growth.
+                <p className="mt-4 text-[14.5px] sm:text-[15.5px] leading-[1.8] text-primary-foreground/75">
+                  Let&apos;s turn your ambitions into a vibrant digital presence that earns
+                  attention, trust, and profitable growth.
                 </p>
                 <Button
                   asChild
-                  className="bg-brand-gradient mt-9 h-[54px] rounded-full px-8 text-[15px] font-semibold text-navy hover:opacity-90"
+                  className="bg-brand-gradient mt-8 h-[52px] w-full sm:w-auto rounded-full px-8 text-[15px] font-semibold text-navy shadow-lg hover:opacity-90"
                 >
                   <Link to="/contact">
                     Start Your Project

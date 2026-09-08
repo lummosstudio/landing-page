@@ -1,55 +1,66 @@
 import { cn } from "@/lib/utils";
+import lumosIcon from "@/assets/lumos-icon.webp";
 
 type LumosLogoProps = {
   className?: string;
   /** "dark" renders navy text for light surfaces, "light" for dark surfaces. */
   tone?: "dark" | "light";
+  /** Optional size variant */
+  size?: "sm" | "md" | "lg";
+  /** Whether to show the subtext/tagline */
+  showTagline?: boolean;
 };
 
 /**
- * Lumos Digital wordmark: gradient "D" mark with an upward arrow, followed by
- * the "LUMOS / DIGITAL" lockup.
+ * Lumos Digital official brand logo:
+ * Crisp iconic "D" growth mark with pixel squares & blue upward arrow,
+ * alongside sharp brand typography for light and dark backgrounds.
  */
-export function LumosLogo({ className, tone = "dark" }: LumosLogoProps) {
+export function LumosLogo({
+  className,
+  tone = "dark",
+  size = "md",
+  showTagline = false,
+}: LumosLogoProps) {
   const isLight = tone === "light";
 
-  return (
-    <span className={cn("flex items-center gap-2.5", className)}>
+  const iconSizes = {
+    sm: "h-8 w-auto max-w-[38px]",
+    md: "h-9 w-auto max-w-[44px] sm:h-10 sm:max-w-[48px]",
+    lg: "h-12 w-auto max-w-[58px]",
+  };
 
-      <svg
-        viewBox="0 0 48 48"
-        role="img"
-        aria-label="Lumos Digital"
-        className="h-9 w-9 shrink-0"
-      >
-        <defs>
-          <linearGradient id="lumos-mark" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="var(--brand-amber)" />
-            <stop offset="100%" stopColor="var(--brand-coral)" />
-          </linearGradient>
-        </defs>
-        <path
-          d="M6 5h14c11 0 18 8 18 19S31 43 20 43H6z"
-          fill="url(#lumos-mark)"
-        />
-        <path
-          d="M14 5h6c11 0 18 8 18 19S31 43 20 43h-6z"
-          fill="var(--navy)"
-          opacity="0.92"
-        />
-        <path
-          d="M13 34c6-2 11-7 15-14"
-          stroke="var(--accent-blue)"
-          strokeWidth="4"
-          strokeLinecap="round"
-          fill="none"
-        />
-        <path d="M24 14l7 1-2 7z" fill="var(--accent-blue)" />
-      </svg>
+  const lumosFontSizes = {
+    sm: "text-[18px]",
+    md: "text-[20px] sm:text-[22px]",
+    lg: "text-[24px] sm:text-[28px]",
+  };
+
+  const digitalFontSizes = {
+    sm: "text-[9px] tracking-[0.38em]",
+    md: "text-[9.5px] sm:text-[10px] tracking-[0.42em]",
+    lg: "text-[11px] sm:text-[12px] tracking-[0.45em]",
+  };
+
+  return (
+    <span className={cn("inline-flex items-center gap-2.5 select-none", className)}>
+      <img
+        src={lumosIcon}
+        alt="Lumos Digital logo mark"
+        width={100}
+        height={78}
+        loading="eager"
+        decoding="async"
+        className={cn(
+          "shrink-0 object-contain drop-shadow-sm transition-transform duration-200 group-hover:scale-105",
+          iconSizes[size],
+        )}
+      />
       <span className="flex flex-col leading-none">
         <span
           className={cn(
-            "text-[22px] font-extrabold tracking-tight",
+            "font-extrabold tracking-tight transition-colors",
+            lumosFontSizes[size],
             isLight ? "text-primary-foreground" : "text-navy",
           )}
         >
@@ -57,12 +68,23 @@ export function LumosLogo({ className, tone = "dark" }: LumosLogoProps) {
         </span>
         <span
           className={cn(
-            "mt-0.5 text-[10px] font-semibold tracking-[0.42em]",
-            isLight ? "text-primary-foreground/60" : "text-muted-foreground",
+            "mt-0.5 font-bold uppercase transition-colors",
+            digitalFontSizes[size],
+            isLight ? "text-primary-foreground/75" : "text-muted-foreground",
           )}
         >
           DIGITAL
         </span>
+        {showTagline && (
+          <span
+            className={cn(
+              "mt-1 text-[8px] font-semibold tracking-[0.18em] uppercase",
+              isLight ? "text-brand-amber" : "text-brand-coral",
+            )}
+          >
+            Smart Marketing · Real Growth
+          </span>
+        )}
       </span>
     </span>
   );

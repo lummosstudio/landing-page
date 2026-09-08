@@ -58,23 +58,23 @@ export function ProcessSection() {
     <section
       id="process"
       aria-labelledby="process-heading"
-      className="cv-auto overflow-hidden bg-background py-12 lg:py-16"
+      className="cv-auto overflow-hidden bg-background py-12 sm:py-14 lg:py-16"
     >
       <h2 id="process-heading" className="sr-only">
         Our process
       </h2>
 
-      <div className="mx-auto flex max-w-[1440px] items-center gap-8 px-5 sm:px-8 lg:gap-4 lg:px-0">
+      <div className="mx-auto flex max-w-[1440px] items-center gap-6 sm:gap-8 px-4 sm:px-6 lg:gap-4 lg:px-8">
         <img
           src={processCamera}
           alt="Professional DSLR camera with a large lens"
           width={700}
           height={700}
           loading="lazy"
-          className="hidden size-[190px] shrink-0 object-contain lg:block xl:size-[220px]"
+          className="hidden size-[180px] shrink-0 object-contain lg:block xl:size-[220px]"
         />
 
-        <ol className="grid w-full gap-y-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-x-2 lg:pr-[max(1.5rem,calc((100vw-1240px)/2))]">
+        <ol className="grid w-full gap-y-8 sm:gap-y-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 lg:gap-x-2">
           {STEPS.map(({ icon: Icon, number, title, description, accent }, i) => (
             <li
               key={number}
@@ -88,28 +88,28 @@ export function ProcessSection() {
               )}
 
               <span
-                className={`relative inline-flex size-[54px] items-center justify-center rounded-full ${
+                className={`relative inline-flex size-[52px] sm:size-[56px] items-center justify-center rounded-full shadow-sm ${
                   accent ? "bg-brand-gradient" : "bg-navy"
                 }`}
               >
                 <Icon
-                  className="size-6 text-primary-foreground"
+                  className="size-5 sm:size-6 text-primary-foreground"
                   strokeWidth={1.8}
                   aria-hidden="true"
                 />
               </span>
 
               <p
-                className={`mt-4 text-[13px] font-bold ${
+                className={`mt-3 sm:mt-4 text-[13px] font-bold ${
                   accent ? "text-brand-coral" : "text-navy"
                 }`}
               >
                 {number}
               </p>
-              <h3 className="mt-1.5 text-[15px] font-bold tracking-[-0.01em] text-navy">
+              <h3 className="mt-1 text-[15px] sm:text-[15.5px] font-bold tracking-[-0.01em] text-navy">
                 {title}
               </h3>
-              <p className="mt-2 max-w-[15rem] text-[12.5px] leading-[1.65] text-muted-foreground">
+              <p className="mt-1.5 sm:mt-2 max-w-[15rem] text-[12.5px] sm:text-[13px] leading-[1.65] text-muted-foreground">
                 {description}
               </p>
             </li>
