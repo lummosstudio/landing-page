@@ -85,7 +85,7 @@ export function SiteFooter() {
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col items-stretch sm:items-center lg:items-start gap-3.5">
               <Button
                 asChild
-                className="bg-brand-gradient h-[54px] w-full rounded-2xl px-8 text-[15.5px] font-bold text-navy shadow-[0_16px_36px_-12px_rgba(255,178,36,0.35)] hover:opacity-95 active:scale-[0.99] transition-all"
+                className="bg-brand-gradient h-[54px] w-full rounded-2xl px-8 text-[15.5px] font-bold text-navy shadow-brand-btn hover:shadow-brand-btn-hover hover:opacity-95 active:scale-[0.99] transition-all"
               >
                 <Link to="/contact">
                   Start Your Project

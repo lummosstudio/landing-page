@@ -94,7 +94,7 @@ export function SiteHeader({ activeItem = "Home" }: { activeItem?: string }) {
         <div className="flex items-center gap-2.5">
           <Button
             asChild
-            className="hidden h-11 rounded-xl bg-navy px-5 text-[14.5px] font-semibold text-primary-foreground shadow-[0_10px_26px_-10px_var(--navy)] hover:bg-navy/90 sm:inline-flex"
+            className="hidden h-11 rounded-xl bg-navy px-5 text-[14.5px] font-semibold text-primary-foreground shadow-navy-btn hover:bg-navy/90 hover:shadow-navy-btn-hover sm:inline-flex"
           >
             <Link to="/contact">
               Book Consultation
@@ -154,7 +154,7 @@ export function SiteHeader({ activeItem = "Home" }: { activeItem?: string }) {
               <li className="pt-6">
                 <Button
                   asChild
-                  className="h-12 w-full rounded-xl bg-navy text-[15px] font-semibold text-primary-foreground shadow-[0_12px_30px_-12px_var(--navy)] hover:bg-navy/90"
+                  className="h-12 w-full rounded-xl bg-navy text-[15px] font-semibold text-primary-foreground shadow-navy-btn hover:bg-navy/90 hover:shadow-navy-btn-hover"
                 >
                   <Link to="/contact" onClick={() => setOpen(false)}>
                     Book Consultation

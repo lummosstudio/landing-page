@@ -189,3 +189,148 @@
   content-visibility: auto;
   contain-intrinsic-size: auto 800px;
 }
+
+/* ==========================================================================
+   Lenis Smooth Scrolling Standards
+   ========================================================================== */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Micro-Animations & Smooth Agency Keyframes
+   ========================================================================== */
+@keyframes float-badge {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1.5deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.06);
+  }
+}
+
+@utility animate-float {
+  animation: float-badge 4.5s ease-in-out infinite;
+}
+
+@utility animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+@utility animate-pulse-glow {
+  animation: pulse-glow 5s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   Luxury Diffusion Shadow System
+   Multi-layered, smooth-falloff shadows for an ultra-premium feel
+   ========================================================================== */
+
+/* Subtle card & badge elevation */
+@utility shadow-soft-xs {
+  box-shadow: 
+    0 1px 2px rgba(22, 35, 103, 0.03),
+    0 2px 6px rgba(22, 35, 103, 0.04);
+}
+
+@utility shadow-soft-sm {
+  box-shadow: 
+    0 2px 4px rgba(22, 35, 103, 0.02),
+    0 6px 14px -2px rgba(22, 35, 103, 0.05);
+}
+
+/* Default card elevation */
+@utility shadow-soft {
+  box-shadow: 
+    0 2px 6px rgba(22, 35, 103, 0.02),
+    0 10px 24px -4px rgba(22, 35, 103, 0.06),
+    0 20px 40px -12px rgba(22, 35, 103, 0.03);
+}
+
+/* Interactive card hover */
+@utility shadow-soft-hover {
+  box-shadow: 
+    0 4px 12px rgba(22, 35, 103, 0.03),
+    0 16px 36px -6px rgba(22, 35, 103, 0.08),
+    0 32px 64px -12px rgba(22, 35, 103, 0.05);
+}
+
+/* Deep floating card / showcase image */
+@utility shadow-soft-xl {
+  box-shadow: 
+    0 4px 12px rgba(22, 35, 103, 0.02),
+    0 16px 36px -8px rgba(22, 35, 103, 0.07),
+    0 36px 72px -16px rgba(22, 35, 103, 0.09);
+}
+
+/* Floating glass badges */
+@utility shadow-glass {
+  box-shadow: 
+    0 4px 16px -2px rgba(22, 35, 103, 0.08),
+    0 12px 30px -4px rgba(22, 35, 103, 0.06);
+}
+
+/* Navy Primary Button */
+@utility shadow-navy-btn {
+  box-shadow: 
+    0 4px 12px -2px rgba(22, 35, 103, 0.25),
+    0 10px 24px -4px rgba(22, 35, 103, 0.15);
+}
+
+@utility shadow-navy-btn-hover {
+  box-shadow: 
+    0 6px 16px -2px rgba(22, 35, 103, 0.3),
+    0 14px 30px -4px rgba(22, 35, 103, 0.2);
+}
+
+/* Brand Accent Glow Button */
+@utility shadow-brand-btn {
+  box-shadow: 
+    0 4px 16px -2px rgba(255, 107, 53, 0.35),
+    0 10px 28px -4px rgba(255, 178, 36, 0.22);
+}
+
+@utility shadow-brand-btn-hover {
+  box-shadow: 
+    0 6px 20px -2px rgba(255, 107, 53, 0.45),
+    0 14px 36px -4px rgba(255, 178, 36, 0.3);
+}
+
+
