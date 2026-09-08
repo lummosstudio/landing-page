@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -38,6 +39,9 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/ScrollReveal";
+import { InteractiveTilt } from "@/components/ui/InteractiveTilt";
+import { SpotlightGrid, SpotlightCard } from "@/components/ui/SpotlightGrid";
+import { MagneticCard } from "@/components/ui/MagneticCard";
 import aboutHero from "@/assets/about-hero.webp";
 import aboutStory from "@/assets/about-story.webp";
 
@@ -172,6 +176,17 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 function AboutPage() {
+  const [activeCapability, setActiveCapability] = useState(0);
+
+  // Smoothly auto-cycle through the 5 capabilities every 3.5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveCapability((prev) => (prev + 1) % JOURNEY.length);
+    }, 3500);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background font-sans">
       <SiteHeader activeItem="About" />
@@ -271,8 +286,11 @@ function AboutPage() {
               {/* Visual Showcase (5 cols) */}
               <div className="relative lg:col-span-5">
                 <Reveal direction="scale" delay={200}>
-                  <div className="relative mx-auto max-w-[500px] lg:max-w-none">
-                    <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-b from-card to-secondary/30 p-2.5 sm:p-3 shadow-soft-xl">
+                  <InteractiveTilt maxTilt={8} scale={1.02} className="mx-auto max-w-[500px] lg:max-w-none">
+                    <div
+                      className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-b from-card to-secondary/30 p-2.5 sm:p-3 shadow-soft-xl"
+                      style={{ transformStyle: "preserve-3d" }}
+                    >
                       <div className="relative overflow-hidden rounded-2xl bg-muted/40 aspect-[4/3.3] sm:aspect-[4/3.4]">
                         <img
                           src={aboutHero}
@@ -286,8 +304,11 @@ function AboutPage() {
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/30 via-transparent to-transparent opacity-60" />
                       </div>
 
-                      {/* Floating Glass Badges */}
-                      <div className="absolute top-6 right-6 hidden sm:flex items-center gap-2 rounded-2xl border border-card/60 bg-card/90 px-3.5 py-2 shadow-glass backdrop-blur-md animate-float">
+                      {/* Floating Glass Badges with 3D Depth Layering */}
+                      <div
+                        className="absolute top-6 right-6 hidden sm:flex items-center gap-2 rounded-2xl border border-card/60 bg-card/90 px-3.5 py-2 shadow-glass backdrop-blur-md animate-float"
+                        style={{ transform: "translateZ(36px)" }}
+                      >
                         <span className="bg-brand-gradient flex size-7 items-center justify-center rounded-xl text-navy">
                           <Sparkles className="size-4" />
                         </span>
@@ -301,7 +322,10 @@ function AboutPage() {
                         </div>
                       </div>
 
-                      <div className="absolute bottom-6 left-6 flex items-center gap-3 rounded-2xl border border-card/60 bg-card/95 p-3 shadow-glass backdrop-blur-md animate-float-slow">
+                      <div
+                        className="absolute bottom-6 left-6 flex items-center gap-3 rounded-2xl border border-card/60 bg-card/95 p-3 shadow-glass backdrop-blur-md animate-float-slow"
+                        style={{ transform: "translateZ(42px)" }}
+                      >
                         <div className="flex size-10 items-center justify-center rounded-xl bg-accent-blue/15 text-navy">
                           <Camera className="size-5" />
                         </div>
@@ -315,7 +339,7 @@ function AboutPage() {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </InteractiveTilt>
                 </Reveal>
               </div>
             </div>
@@ -329,18 +353,37 @@ function AboutPage() {
               {/* Image Frame (5 cols) */}
               <div className="lg:col-span-5">
                 <Reveal direction="right" delay={100}>
-                  <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-b from-card to-secondary/30 p-2.5 sm:p-3 shadow-soft">
-                    <div className="overflow-hidden rounded-2xl aspect-[4/3.8] sm:aspect-[4/3.5] lg:aspect-[4/4.5]">
-                      <img
-                        src={aboutStory}
-                        alt="Photographer reviewing images on camera during a Lumos shoot"
-                        width={900}
-                        height={1000}
-                        loading="lazy"
-                        className="size-full object-cover object-center transition-transform duration-700 hover:scale-105"
-                      />
+                  <InteractiveTilt maxTilt={8} scale={1.02}>
+                    <div
+                      className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-b from-card to-secondary/30 p-2.5 sm:p-3 shadow-soft-xl"
+                      style={{ transformStyle: "preserve-3d" }}
+                    >
+                      <div className="overflow-hidden rounded-2xl aspect-[4/3.8] sm:aspect-[4/3.5] lg:aspect-[4/4.5]">
+                        <img
+                          src={aboutStory}
+                          alt="Photographer reviewing images on camera during a Lumos shoot"
+                          width={900}
+                          height={1000}
+                          loading="lazy"
+                          className="size-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                        />
+                      </div>
+
+                      {/* Story Floating Badge */}
+                      <div
+                        className="absolute bottom-6 right-6 flex items-center gap-2.5 rounded-2xl border border-card/60 bg-card/95 px-3.5 py-2.5 shadow-glass backdrop-blur-md animate-float"
+                        style={{ transform: "translateZ(32px)" }}
+                      >
+                        <div className="flex size-8 items-center justify-center rounded-xl bg-brand-amber/15 text-brand-amber">
+                          <Trophy className="size-4" />
+                        </div>
+                        <div className="leading-tight">
+                          <p className="text-[12px] font-black text-navy">250+ Brands</p>
+                          <p className="text-[10.5px] font-medium text-muted-foreground">South India & Beyond</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </InteractiveTilt>
                 </Reveal>
               </div>
 
@@ -486,26 +529,84 @@ function AboutPage() {
             </Reveal>
 
             <ol className="mt-10 sm:mt-12 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
-              {JOURNEY.map(({ title, text, icon: Icon }, index) => (
-                <li key={title}>
-                  <Reveal direction="up" delay={index * 80}>
-                    <div className="flex flex-col h-full rounded-2xl border border-border bg-card p-5 shadow-soft-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-amber/50 hover:shadow-soft-sm">
-                      <div className="flex items-center justify-between">
-                        <div className="inline-flex size-11 items-center justify-center rounded-xl bg-secondary text-navy">
-                          <Icon className="size-5" strokeWidth={1.8} aria-hidden="true" />
+              {JOURNEY.map(({ title, text, icon: Icon }, index) => {
+                const isActive = activeCapability === index;
+                const isPast = activeCapability > index;
+
+                return (
+                  <li
+                    key={title}
+                    className="cursor-pointer select-none"
+                    onClick={() => setActiveCapability(index)}
+                  >
+                    <Reveal direction="up" delay={index * 80}>
+                      <div
+                        className={`group relative flex flex-col justify-between h-full rounded-2xl border bg-card p-5 transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                          isActive
+                            ? "border-brand-amber shadow-soft-hover -translate-y-1.5 ring-2 ring-brand-amber/20"
+                            : "border-border shadow-soft-xs hover:-translate-y-1 hover:border-brand-amber/50 hover:shadow-soft-sm"
+                        }`}
+                      >
+                        {/* Top ambient card accent line on active */}
+                        <div
+                          className={`absolute inset-x-0 top-0 h-1 rounded-t-2xl bg-gradient-to-r from-transparent via-brand-amber to-transparent transition-opacity duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                            isActive ? "opacity-100" : "opacity-0"
+                          }`}
+                        />
+
+                        <div>
+                          <div className="flex items-center justify-between">
+                            <div
+                              className={`inline-flex size-11 items-center justify-center rounded-xl transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                                isActive
+                                  ? "bg-brand-gradient text-navy shadow-brand-btn scale-105"
+                                  : "bg-secondary text-navy group-hover:bg-brand-amber/15 group-hover:text-brand-amber"
+                              }`}
+                            >
+                              <Icon
+                                className="size-5"
+                                strokeWidth={isActive ? 2.2 : 1.8}
+                                aria-hidden="true"
+                              />
+                            </div>
+                            <span
+                              className={`flex size-6 items-center justify-center rounded-full text-[11px] font-black shadow-soft-xs transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                                isActive
+                                  ? "bg-navy text-primary-foreground scale-105 shadow-navy-btn"
+                                  : "bg-brand-gradient text-navy"
+                              }`}
+                            >
+                              {index + 1}
+                            </span>
+                          </div>
+
+                          <h3
+                            className={`mt-4 text-[15.5px] font-bold transition-colors duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                              isActive ? "text-brand-coral font-extrabold" : "text-navy"
+                            }`}
+                          >
+                            {title}
+                          </h3>
+                          <p className="mt-1.5 text-[13px] leading-[1.65] text-muted-foreground transition-colors duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                            {text}
+                          </p>
                         </div>
-                        <span className="bg-brand-gradient flex size-6 items-center justify-center rounded-full text-[11px] font-black text-navy shadow-soft-xs">
-                          {index + 1}
-                        </span>
+
+                        {/* Bottom Active Progress Pill */}
+                        <div
+                          className={`mt-4 h-1 rounded-full transition-all duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                            isActive
+                              ? "w-8 bg-brand-gradient shadow-soft-xs"
+                              : isPast
+                              ? "w-2 bg-border"
+                              : "w-1.5 bg-border/40"
+                          }`}
+                        />
                       </div>
-                      <h3 className="mt-4 text-[15.5px] font-bold text-navy">{title}</h3>
-                      <p className="mt-1.5 text-[13px] leading-[1.65] text-muted-foreground">
-                        {text}
-                      </p>
-                    </div>
-                  </Reveal>
-                </li>
-              ))}
+                    </Reveal>
+                  </li>
+                );
+              })}
             </ol>
           </div>
         </section>
@@ -528,23 +629,36 @@ function AboutPage() {
               </div>
             </Reveal>
 
-            <ul className="mt-8 sm:mt-10 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {/* GSAP-Style Interactive Spotlight Matrix */}
+            <SpotlightGrid className="mt-8 sm:mt-10 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {WHY.map(({ title, text, icon: Icon }, index) => (
-                <li key={title}>
-                  <Reveal direction="up" delay={index * 75}>
-                    <article className="flex h-full flex-col rounded-3xl border border-border bg-card p-6 sm:p-7 shadow-soft-xs transition-all duration-300 hover:-translate-y-1 hover:border-brand-amber/50 hover:shadow-soft-sm">
-                      <span className="inline-flex size-12 items-center justify-center rounded-xl bg-secondary text-accent-blue">
-                        <Icon className="size-5" strokeWidth={2} aria-hidden="true" />
-                      </span>
-                      <h3 className="mt-5 text-[16.5px] font-bold text-navy">{title}</h3>
+                <Reveal key={title} direction="up" delay={index * 75} className="h-full">
+                  <SpotlightCard className="h-full flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between">
+                        <span className="inline-flex size-12 items-center justify-center rounded-xl bg-secondary text-navy transition-all duration-300 group-hover:scale-110 group-hover:bg-brand-amber/15 group-hover:text-brand-amber shadow-soft-xs">
+                          <Icon className="size-5" strokeWidth={2} aria-hidden="true" />
+                        </span>
+                        <span className="text-[11px] font-black uppercase tracking-widest text-muted-foreground/50 font-mono">
+                          0{index + 1}
+                        </span>
+                      </div>
+                      <h3 className="mt-5 text-[16.5px] font-bold text-navy transition-colors group-hover:text-brand-coral">
+                        {title}
+                      </h3>
                       <p className="mt-2 text-[13.5px] leading-[1.75] text-muted-foreground">
                         {text}
                       </p>
-                    </article>
-                  </Reveal>
-                </li>
+                    </div>
+
+                    <div className="mt-5 pt-3.5 border-t border-border/40 flex items-center justify-between text-[11.5px] font-bold text-muted-foreground group-hover:text-navy transition-colors">
+                      <span>Agency Standard</span>
+                      <ArrowRight className="size-3 text-brand-coral transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </SpotlightCard>
+                </Reveal>
               ))}
-            </ul>
+            </SpotlightGrid>
           </div>
         </section>
 
@@ -566,20 +680,32 @@ function AboutPage() {
               </div>
             </Reveal>
 
-            <ul className="mt-8 sm:mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+            <ul className="mt-8 sm:mt-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-4">
               {INDUSTRIES.map(({ label, icon: Icon }, index) => (
                 <li key={label}>
-                  <Reveal direction="up" delay={index * 40}>
-                    <div className="flex min-w-0 items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-all duration-200 hover:border-brand-amber hover:shadow-soft-xs">
-                      <Icon
-                        className="size-5 shrink-0 text-brand-coral"
-                        strokeWidth={1.8}
-                        aria-hidden="true"
-                      />
-                      <span className="min-w-0 text-[13px] font-semibold text-navy leading-tight">
-                        {label}
-                      </span>
-                    </div>
+                  <Reveal direction="up" delay={index * 40} className="h-full">
+                    <MagneticCard
+                      floatDuration={3.8 + (index % 4) * 0.7}
+                      floatDelay={(index % 5) * 0.3}
+                      strength={0.2}
+                      className="h-full"
+                    >
+                      <div className="relative overflow-hidden flex h-full min-w-0 items-center gap-3 rounded-2xl border border-border bg-card p-4 transition-all duration-400 hover:border-brand-amber/80 hover:shadow-soft-hover cursor-default">
+                        {/* Top glowing accent line on hover */}
+                        <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-brand-amber to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+
+                        <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-secondary text-brand-coral transition-all duration-400 group-hover:scale-110 group-hover:bg-brand-gradient group-hover:text-navy group-hover:shadow-brand-btn">
+                          <Icon
+                            className="size-4 shrink-0"
+                            strokeWidth={2}
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <span className="min-w-0 text-[13px] font-semibold text-navy leading-tight transition-colors group-hover:text-brand-coral">
+                          {label}
+                        </span>
+                      </div>
+                    </MagneticCard>
                   </Reveal>
                 </li>
               ))}
