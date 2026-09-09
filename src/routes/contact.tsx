@@ -31,23 +31,33 @@ import {
 } from "@/components/ui/accordion";
 import contactStudio from "@/assets/contact-studio.webp";
 
-const TITLE = "Contact Lumos Digital Media | Grow Your Brand";
+const TITLE = "Contact Lumos Digital Media | Best Digital Marketing Agency in Pondicherry";
 const DESCRIPTION =
-  "Contact Lumos Digital Media for digital marketing, social media, branding, content, advertising, SEO and lead generation support.";
+  "Contact Lumos Digital Media in Pondicherry for digital marketing, social media management, commercial video production, SEO, performance ads, and branding.";
+const CANONICAL_URL = "https://lumosdigitalmedia.in/contact";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
+      {
+        name: "keywords",
+        content:
+          "contact lumos digital media, digital marketing agency pondicherry contact, hire video production pondicherry, social media marketing agency pondicherry phone, advertising agency vazhudavur road puducherry, digital marketing consultation pondicherry",
+      },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/contact" },
+      { property: "og:url", content: CANONICAL_URL },
+      { property: "og:image", content: "https://lumosdigitalmedia.in/Lumos-Digital-logo.png" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+      { name: "twitter:image", content: "https://lumosdigitalmedia.in/Lumos-Digital-logo.png" },
     ],
     links: [
-      { rel: "canonical", href: "/contact" },
+      { rel: "canonical", href: CANONICAL_URL },
       { rel: "preload", as: "image", href: contactStudio, fetchPriority: "high" },
     ],
     scripts: [
@@ -55,19 +65,107 @@ export const Route = createFileRoute("/contact")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          name: "Lumos Digital Media",
-          description: DESCRIPTION,
-          email: "info@lumosdigitalmedia.in",
-          telephone: "+91 90037 82254",
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "Opposite Hotel Tamizh Park, Sokkanathan Pet, Mothilal Nagar, Marie Oulgaret, Vazhudavur Road",
-            addressLocality: "Puducherry",
-            addressRegion: "Puducherry",
-            postalCode: "605009",
-            addressCountry: "IN",
-          },
+          "@graph": [
+            {
+              "@type": "ContactPage",
+              "@id": "https://lumosdigitalmedia.in/contact#contactpage",
+              url: "https://lumosdigitalmedia.in/contact",
+              name: TITLE,
+              description: DESCRIPTION,
+            },
+            {
+              "@type": "LocalBusiness",
+              "@id": "https://lumosdigitalmedia.in/#localbusiness",
+              name: "Lumos Digital Media",
+              url: "https://lumosdigitalmedia.in/",
+              logo: "https://lumosdigitalmedia.in/Lumos-Digital-logo.png",
+              description: DESCRIPTION,
+              email: "info@lumosdigitalmedia.in",
+              telephone: "+91 90037 82254",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress:
+                  "Opposite Hotel Tamizh Park, Sokkanathan Pet, Mothilal Nagar, Marie Oulgaret, Vazhudavur Road",
+                addressLocality: "Puducherry",
+                addressRegion: "Puducherry",
+                postalCode: "605009",
+                addressCountry: "IN",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: 11.9416,
+                longitude: 79.8083,
+              },
+              openingHoursSpecification: [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  dayOfWeek: [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                  ],
+                  opens: "09:00",
+                  closes: "19:00",
+                },
+              ],
+            },
+            {
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "What marketing services do you provide?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "We provide comprehensive digital marketing, social media management, performance advertising (Meta & Google), cinematic video production, reels, SEO, lead generation, branding and web development.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Can you manage our complete digital presence?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes. We operate as a full-service growth partner, synchronizing brand strategy, creative production, publishing, ads and performance optimization.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How fast can we get started with a campaign?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "After an initial discovery call and agreed scope, we typically kick off strategy and initial creative production within 3 to 5 business days.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Do you handle shooting and video creation locally?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes. Our team manages on-location photography and cinematic video production in Pondicherry, Chennai, and across Tamil Nadu.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How do you measure and report ROI?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "We track qualified leads, cost per acquisition (CPA), conversion rates, and ROAS using transparent dashboards shared with you monthly.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How can I get a customized proposal?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Fill out the enquiry form below or call us directly. We review your requirements and share a structured proposal within one business day.",
+                  },
+                },
+              ],
+            },
+          ],
         }),
       },
     ],

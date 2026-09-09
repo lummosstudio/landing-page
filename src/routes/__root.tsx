@@ -80,14 +80,43 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lumos Digital Media" },
-      { name: "description", content: "Creative digital marketing and branding agency." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lumos Digital Media" },
-      { property: "og:description", content: "Creative digital marketing and branding agency." },
+      { title: "Lumos Digital Media — Best Digital Marketing Agency in Pondicherry" },
+      {
+        name: "description",
+        content:
+          "Lumos Digital Media is a premier creative digital marketing and media agency in Pondicherry. We specialize in social media marketing, commercial video shoots, reels, SEO, performance ads, and branding.",
+      },
+      { name: "author", content: "Lumos Digital Media" },
+      {
+        name: "robots",
+        content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      },
+      // Local SEO & Geo-Targeting (Pondicherry / Puducherry)
+      { name: "geo.region", content: "IN-PY" },
+      { name: "geo.placename", content: "Puducherry" },
+      { name: "geo.position", content: "11.9416;79.8083" },
+      { name: "ICBM", content: "11.9416, 79.8083" },
+      // Open Graph
+      { property: "og:site_name", content: "Lumos Digital Media" },
+      { property: "og:title", content: "Lumos Digital Media — Best Digital Marketing Agency in Pondicherry" },
+      {
+        property: "og:description",
+        content:
+          "Grow your business with smart digital marketing, high-converting reels, commercial video shoots, SEO, and brand storytelling in Pondicherry.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "en_IN" },
+      { property: "og:image", content: "https://lumosdigitalmedia.in/Lumos-Digital-logo.png" },
+      { property: "og:image:alt", content: "Lumos Digital Media — Creative Marketing Agency Pondicherry" },
+      // Twitter Card
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Lumos Digital Media — Best Digital Marketing Agency in Pondicherry" },
+      {
+        name: "twitter:description",
+        content:
+          "Creative digital marketing, commercial shoots, social media strategy, and brand building agency in Pondicherry.",
+      },
+      { name: "twitter:image", content: "https://lumosdigitalmedia.in/Lumos-Digital-logo.png" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -100,12 +129,48 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
       { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
       { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
     ],
-
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Lumos Digital Media",
+          url: "https://lumosdigitalmedia.in",
+          logo: "https://lumosdigitalmedia.in/Lumos-Digital-logo.png",
+          description:
+            "Lumos Digital Media is a leading digital marketing, branding, video production, and advertising agency in Pondicherry.",
+          telephone: "+91 90037 82254",
+          email: "info@lumosdigitalmedia.in",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress:
+              "Opposite Hotel Tamizh Park, Sokkanathan Pet, Mothilal Nagar, Marie Oulgaret, Vazhudavur Road",
+            addressLocality: "Puducherry",
+            addressRegion: "Puducherry",
+            postalCode: "605009",
+            addressCountry: "IN",
+          },
+          sameAs: [
+            "https://www.instagram.com/lumosdigitalmedia",
+            "https://www.facebook.com/lumosdigitalmedia",
+          ],
+          contactPoint: {
+            "@type": "ContactPoint",
+            telephone: "+91 90037 82254",
+            contactType: "sales",
+            areaServed: ["IN", "IN-PY", "IN-TN"],
+            availableLanguage: ["English", "Tamil"],
+          },
+        }),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,

@@ -46,24 +46,74 @@ import { WarpSpeedTrails } from "@/components/ui/WarpSpeedTrails";
 import aboutHero from "@/assets/about-hero.webp";
 import aboutStory from "@/assets/about-story.webp";
 
-const TITLE = "About Lumos Digital Media | Creative Growth Agency";
+const TITLE = "About Us | Leading Digital Marketing & Creative Agency in Pondicherry — Lumos";
 const DESCRIPTION =
-  "Meet Lumos Digital Media, a creative digital marketing and branding agency helping businesses grow through strategy, content, advertising and brand building.";
+  "Learn about Lumos Digital Media, Pondicherry's premier creative digital marketing, branding, and commercial video production agency helping brands scale across South India.";
+const CANONICAL_URL = "https://lumosdigitalmedia.in/about";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
+      {
+        name: "keywords",
+        content:
+          "about lumos digital media, creative agency pondicherry, digital marketing team puducherry, video production studio pondicherry, branding agency pondicherry, marketing experts south india, commercial photography pondicherry",
+      },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/about" },
+      { property: "og:url", content: CANONICAL_URL },
+      { property: "og:image", content: "https://lumosdigitalmedia.in/Lumos-Digital-logo.png" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: DESCRIPTION },
+      { name: "twitter:image", content: "https://lumosdigitalmedia.in/Lumos-Digital-logo.png" },
     ],
     links: [
-      { rel: "canonical", href: "/about" },
+      { rel: "canonical", href: CANONICAL_URL },
       { rel: "preload", as: "image", href: aboutHero, fetchPriority: "high" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "@id": "https://lumosdigitalmedia.in/about#aboutpage",
+          url: "https://lumosdigitalmedia.in/about",
+          name: TITLE,
+          description: DESCRIPTION,
+          mainEntity: {
+            "@type": "LocalBusiness",
+            name: "Lumos Digital Media",
+            url: "https://lumosdigitalmedia.in/",
+            logo: "https://lumosdigitalmedia.in/Lumos-Digital-logo.png",
+            telephone: "+91 90037 82254",
+            email: "info@lumosdigitalmedia.in",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress:
+                "Opposite Hotel Tamizh Park, Sokkanathan Pet, Mothilal Nagar, Marie Oulgaret, Vazhudavur Road",
+              addressLocality: "Puducherry",
+              addressRegion: "Puducherry",
+              postalCode: "605009",
+              addressCountry: "IN",
+            },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: 11.9416,
+              longitude: 79.8083,
+            },
+            areaServed: [
+              { "@type": "City", name: "Puducherry" },
+              { "@type": "AdministrativeArea", name: "Tamil Nadu" },
+              { "@type": "Country", name: "India" },
+            ],
+          },
+        }),
+      },
     ],
   }),
   component: AboutPage,

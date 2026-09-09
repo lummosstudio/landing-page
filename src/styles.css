@@ -273,10 +273,9 @@ html.lenis body {
 
 @utility animate-marquee-hover-pause {
   animation-play-state: running;
-}
-
-@utility animate-marquee-hover-pause:hover {
-  animation-play-state: paused;
+  &:hover {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes beam-flow {

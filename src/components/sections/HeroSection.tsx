@@ -73,8 +73,8 @@ export function HeroSection() {
             {/* Subheading */}
             <Reveal direction="up" delay={160}>
               <p className="mt-5 max-w-[520px] text-[15.5px] sm:text-[16.5px] leading-[1.75] text-muted-foreground">
-                We build brands, create high-converting content, and drive digital growth
-                through strategic marketing, creative storytelling, and measurable performance.
+                We build brands, create high-converting content & reels, and drive measurable
+                revenue growth for ambitious businesses in Pondicherry and across South India.
               </p>
             </Reveal>
 
