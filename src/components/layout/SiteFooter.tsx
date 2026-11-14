@@ -24,12 +24,13 @@ const SOCIALS: { icon: LucideIcon; label: string; href: string }[] = [
   { icon: Youtube, label: "YouTube", href: "#" },
 ];
 
-type FooterLink = { label: string; to?: "/" | "/about" | "/contact"; href?: string };
+type FooterLink = { label: string; to?: "/" | "/about" | "/contact" | "/careers"; href?: string };
 
 const NAV_LINKS: FooterLink[] = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about" },
   { label: "Services", href: "/#services" },
+  { label: "Careers", to: "/careers" },
   { label: "Contact Us", to: "/contact" },
 ];
 

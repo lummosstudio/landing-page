@@ -6,12 +6,13 @@ import { LumosLogo } from "@/components/brand/LumosLogo";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-type NavItem = { label: string; to?: "/" | "/about" | "/contact"; href?: string };
+type NavItem = { label: string; to?: "/" | "/about" | "/contact" | "/careers"; href?: string };
 
 const NAV_ITEMS: NavItem[] = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
   { label: "Services", href: "/#services" },
+  { label: "Careers", to: "/careers" },
   { label: "Contact", to: "/contact" },
 ];
 

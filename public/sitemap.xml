@@ -21,6 +21,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Careers Page -->
+  <url>
+    <loc>https://lumosdigitalmedia.in/careers</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Contact Page -->
   <url>
     <loc>https://lumosdigitalmedia.in/contact</loc>
