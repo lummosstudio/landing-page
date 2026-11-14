@@ -67,11 +67,10 @@ export const Route = createFileRoute("/")({
               priceRange: "₹₹",
               address: {
                 "@type": "PostalAddress",
-                streetAddress:
-                  "Opposite Hotel Tamizh Park, Sokkanathan Pet, Mothilal Nagar, Marie Oulgaret, Vazhudavur Road",
+                streetAddress: "3rd floor, 127-vellalar street",
                 addressLocality: "Puducherry",
                 addressRegion: "Puducherry",
-                postalCode: "605009",
+                postalCode: "605001",
                 addressCountry: "IN",
               },
               geo: {
@@ -82,14 +81,7 @@ export const Route = createFileRoute("/")({
               openingHoursSpecification: [
                 {
                   "@type": "OpeningHoursSpecification",
-                  dayOfWeek: [
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                  ],
+                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
                   opens: "09:00",
                   closes: "19:00",
                 },

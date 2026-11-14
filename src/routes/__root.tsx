@@ -98,7 +98,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "ICBM", content: "11.9416, 79.8083" },
       // Open Graph
       { property: "og:site_name", content: "Lumos Digital Media" },
-      { property: "og:title", content: "Lumos Digital Media — Best Digital Marketing Agency in Pondicherry" },
+      {
+        property: "og:title",
+        content: "Lumos Digital Media — Best Digital Marketing Agency in Pondicherry",
+      },
       {
         property: "og:description",
         content:
@@ -107,10 +110,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_IN" },
       { property: "og:image", content: "https://lumosdigitalmedia.in/Lumos-Digital-logo.png" },
-      { property: "og:image:alt", content: "Lumos Digital Media — Creative Marketing Agency Pondicherry" },
+      {
+        property: "og:image:alt",
+        content: "Lumos Digital Media — Creative Marketing Agency Pondicherry",
+      },
       // Twitter Card
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Lumos Digital Media — Best Digital Marketing Agency in Pondicherry" },
+      {
+        name: "twitter:title",
+        content: "Lumos Digital Media — Best Digital Marketing Agency in Pondicherry",
+      },
       {
         name: "twitter:description",
         content:
@@ -150,11 +159,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           email: "info@lumosdigitalmedia.in",
           address: {
             "@type": "PostalAddress",
-            streetAddress:
-              "Opposite Hotel Tamizh Park, Sokkanathan Pet, Mothilal Nagar, Marie Oulgaret, Vazhudavur Road",
+            streetAddress: "3rd floor, 127-vellalar street",
             addressLocality: "Puducherry",
             addressRegion: "Puducherry",
-            postalCode: "605009",
+            postalCode: "605001",
             addressCountry: "IN",
           },
           sameAs: [

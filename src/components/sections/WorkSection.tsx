@@ -83,9 +83,7 @@ export function WorkSection() {
   const [active, setActive] = useState<Filter>("All");
 
   const projects =
-    active === "All"
-      ? PROJECTS
-      : PROJECTS.filter((project) => project.tags.includes(active));
+    active === "All" ? PROJECTS : PROJECTS.filter((project) => project.tags.includes(active));
 
   return (
     <section

@@ -88,7 +88,6 @@ export function ParallaxSpotlightSection() {
         ================================================================
       */}
       <div className="relative z-10 mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8 text-center text-white">
-        
         {/* User-facing Marketing Tag Badge */}
         <Reveal direction="down" delay={0}>
           <div className="inline-flex items-center gap-2.5 rounded-full border border-white/25 bg-navy/90 px-4 py-1.5 shadow-glass backdrop-blur-md">
@@ -115,7 +114,8 @@ export function ParallaxSpotlightSection() {
         {/* Subtitle */}
         <Reveal direction="up" delay={140}>
           <p className="mt-5 max-w-[660px] mx-auto text-[15.5px] sm:text-[17.5px] leading-[1.75] text-slate-200 font-normal drop-shadow">
-            We combine cinematic storytelling, full-funnel paid media, and strategic conversion design to transform ambitious businesses into recognized market leaders.
+            We combine cinematic storytelling, full-funnel paid media, and strategic conversion
+            design to transform ambitious businesses into recognized market leaders.
           </p>
         </Reveal>
 
@@ -127,12 +127,7 @@ export function ParallaxSpotlightSection() {
           {STATS.map((stat) => {
             const Icon = stat.icon;
             return (
-              <Reveal
-                key={stat.label}
-                direction="up"
-                delay={stat.delay}
-                className="h-full"
-              >
+              <Reveal key={stat.label} direction="up" delay={stat.delay} className="h-full">
                 <div
                   className={`group relative h-full flex flex-col justify-between rounded-2xl border border-white/20 bg-[#0c1427]/95 p-6 text-left shadow-2xl shadow-black/50 backdrop-blur-2xl transition-all duration-300 hover:-translate-y-2 hover:bg-[#0f1a33] hover:border-white/40 ${stat.borderGlow}`}
                 >
@@ -141,10 +136,14 @@ export function ParallaxSpotlightSection() {
 
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className={`flex size-11 items-center justify-center rounded-xl border ${stat.iconBg} backdrop-blur-sm group-hover:scale-110 transition-all duration-300`}>
+                      <span
+                        className={`flex size-11 items-center justify-center rounded-xl border ${stat.iconBg} backdrop-blur-sm group-hover:scale-110 transition-all duration-300`}
+                      >
                         <Icon className="size-5" />
                       </span>
-                      <span className={`text-[2.2rem] sm:text-[2.5rem] font-black tracking-tight drop-shadow-sm ${stat.accent}`}>
+                      <span
+                        className={`text-[2.2rem] sm:text-[2.5rem] font-black tracking-tight drop-shadow-sm ${stat.accent}`}
+                      >
                         {stat.value}
                       </span>
                     </div>
@@ -176,7 +175,7 @@ export function ParallaxSpotlightSection() {
               className="h-[52px] rounded-xl bg-brand-gradient px-8 text-[15px] font-bold text-navy shadow-brand-btn hover:brightness-110 active:scale-[0.99] transition-all"
             >
               <Link to="/contact">
-                Start Your Project
+                Book A Free Consultation
                 <ArrowRight className="ml-2 size-4" strokeWidth={2.5} />
               </Link>
             </Button>
@@ -186,13 +185,10 @@ export function ParallaxSpotlightSection() {
               variant="outline"
               className="h-[52px] rounded-xl border-white/30 bg-white/10 px-6 text-[15px] font-semibold text-white hover:bg-white/20 active:scale-[0.99] backdrop-blur-md transition-all"
             >
-              <a href="#work">
-                View Featured Work
-              </a>
+              <a href="#work">View Featured Work</a>
             </Button>
           </div>
         </Reveal>
-
       </div>
     </section>
   );

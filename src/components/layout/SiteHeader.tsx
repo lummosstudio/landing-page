@@ -15,8 +15,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Contact", to: "/contact" },
 ];
 
-const LINK_BASE =
-  "relative inline-block py-2 text-[15px] font-medium transition-colors";
+const LINK_BASE = "relative inline-block py-2 text-[15px] font-medium transition-colors";
 
 export function SiteHeader({ activeItem = "Home" }: { activeItem?: string }) {
   const [open, setOpen] = useState(false);
@@ -97,7 +96,7 @@ export function SiteHeader({ activeItem = "Home" }: { activeItem?: string }) {
             className="hidden h-11 rounded-xl bg-navy px-5 text-[14.5px] font-semibold text-primary-foreground shadow-navy-btn hover:bg-navy/90 hover:shadow-navy-btn-hover sm:inline-flex"
           >
             <Link to="/contact">
-              Book Consultation
+              Book a Free Consultation
               <ArrowRight className="ml-2 size-4" strokeWidth={2.5} />
             </Link>
           </Button>
@@ -117,10 +116,7 @@ export function SiteHeader({ activeItem = "Home" }: { activeItem?: string }) {
       {/* Mobile Drawer Menu */}
       {open && (
         <div className="fixed inset-x-0 top-20 bottom-0 z-50 flex flex-col bg-background/98 backdrop-blur-lg lg:hidden">
-          <nav
-            aria-label="Mobile"
-            className="flex-1 overflow-y-auto px-5 py-6 sm:px-8"
-          >
+          <nav aria-label="Mobile" className="flex-1 overflow-y-auto px-5 py-6 sm:px-8">
             <ul className="mx-auto flex max-w-lg flex-col divide-y divide-border/40">
               {NAV_ITEMS.map((item) => (
                 <li key={item.label}>
@@ -157,7 +153,7 @@ export function SiteHeader({ activeItem = "Home" }: { activeItem?: string }) {
                   className="h-12 w-full rounded-xl bg-navy text-[15px] font-semibold text-primary-foreground shadow-navy-btn hover:bg-navy/90 hover:shadow-navy-btn-hover"
                 >
                   <Link to="/contact" onClick={() => setOpen(false)}>
-                    Book Consultation
+                    Book a Free Consultation
                     <ArrowRight className="ml-2 size-4" strokeWidth={2.5} />
                   </Link>
                 </Button>

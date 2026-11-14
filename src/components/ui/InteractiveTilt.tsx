@@ -45,7 +45,7 @@ export function InteractiveTilt({
       const rotateY = (xPct * maxTilt).toFixed(2);
 
       setTransformStyle(
-        `perspective(${perspective}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${scale}, ${scale}, ${scale})`
+        `perspective(${perspective}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${scale}, ${scale}, ${scale})`,
       );
 
       setSpotlightPos({
@@ -54,13 +54,11 @@ export function InteractiveTilt({
         opacity: 1,
       });
     },
-    [maxTilt, scale, perspective]
+    [maxTilt, scale, perspective],
   );
 
   const handleMouseLeave = useCallback(() => {
-    setTransformStyle(
-      `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`
-    );
+    setTransformStyle(`perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`);
     setSpotlightPos((prev) => ({ ...prev, opacity: 0 }));
   }, [perspective]);
 
@@ -72,7 +70,9 @@ export function InteractiveTilt({
       style={{
         transform: transformStyle,
         transformStyle: "preserve-3d",
-        transition: transformStyle ? "transform 150ms cubic-bezier(0.16, 1, 0.3, 1)" : "transform 700ms cubic-bezier(0.16, 1, 0.3, 1)",
+        transition: transformStyle
+          ? "transform 150ms cubic-bezier(0.16, 1, 0.3, 1)"
+          : "transform 700ms cubic-bezier(0.16, 1, 0.3, 1)",
       }}
       className={cn("relative will-change-transform", className)}
       {...props}

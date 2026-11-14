@@ -32,7 +32,7 @@ export function MagneticCard({
       const y = (e.clientY - centerY) * strength;
       setOffset({ x, y });
     },
-    [strength]
+    [strength],
   );
 
   const handleMouseEnter = useCallback(() => {
@@ -61,10 +61,7 @@ export function MagneticCard({
           ? "transform 100ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms ease, border-color 300ms ease"
           : "transform 600ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 400ms ease, border-color 400ms ease",
       }}
-      className={cn(
-        "group relative select-none will-change-transform",
-        className
-      )}
+      className={cn("group relative select-none will-change-transform", className)}
       {...props}
     >
       {children}

@@ -44,7 +44,7 @@ export function HeroSection() {
           {/* Copy column (7 cols on desktop) */}
           <div className="flex flex-col lg:col-span-7">
             {/* Tag Badge */}
-            <Reveal direction="down" delay={0}>
+            <Reveal direction="down" delay={0} priority>
               <div className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card/80 px-4 py-1.5 shadow-soft-xs backdrop-blur-sm">
                 <span className="text-[12px] font-bold tracking-[0.14em] text-navy uppercase">
                   Lumos Digital
@@ -57,7 +57,7 @@ export function HeroSection() {
             </Reveal>
 
             {/* Headline */}
-            <Reveal direction="up" delay={80}>
+            <Reveal direction="up" delay={50} priority>
               <h1
                 id="hero-heading"
                 className="mt-5 text-[clamp(2.35rem,5.2vw,3.85rem)] leading-[1.08] font-extrabold tracking-[-0.035em] text-navy"
@@ -71,7 +71,7 @@ export function HeroSection() {
             </Reveal>
 
             {/* Subheading */}
-            <Reveal direction="up" delay={160}>
+            <Reveal direction="up" delay={100} priority>
               <p className="mt-5 max-w-[520px] text-[15.5px] sm:text-[16.5px] leading-[1.75] text-muted-foreground">
                 We build brands, create high-converting content & reels, and drive measurable
                 revenue growth for ambitious businesses in Pondicherry and across South India.
@@ -79,7 +79,7 @@ export function HeroSection() {
             </Reveal>
 
             {/* Feature Pills */}
-            <Reveal direction="up" delay={240}>
+            <Reveal direction="up" delay={150} priority>
               <ul className="mt-6 flex flex-wrap items-center gap-2.5 sm:gap-3">
                 {HIGHLIGHTS.map(({ icon: Icon, label }) => (
                   <li
@@ -98,14 +98,14 @@ export function HeroSection() {
             </Reveal>
 
             {/* CTA Buttons */}
-            <Reveal direction="up" delay={320}>
+            <Reveal direction="up" delay={200} priority>
               <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
                 <Button
                   asChild
                   className="h-[52px] rounded-xl bg-navy px-8 text-[15px] font-semibold text-primary-foreground shadow-navy-btn hover:bg-navy/90 hover:shadow-navy-btn-hover active:scale-[0.99] transition-all"
                 >
                   <Link to="/contact">
-                    Start Growing
+                    Book A Free Consultation
                     <ArrowRight className="ml-2.5 size-4" strokeWidth={2.5} />
                   </Link>
                 </Button>
@@ -117,10 +117,7 @@ export function HeroSection() {
                 >
                   <a href="#services" className="inline-flex items-center">
                     <span className="mr-2.5 inline-flex size-7 items-center justify-center rounded-lg bg-secondary text-navy">
-                      <Sparkles
-                        className="size-3.5 text-accent-blue"
-                        aria-hidden="true"
-                      />
+                      <Sparkles className="size-3.5 text-accent-blue" aria-hidden="true" />
                     </span>
                     Explore Services
                   </a>
@@ -129,7 +126,7 @@ export function HeroSection() {
             </Reveal>
 
             {/* Social Proof & Client Avatars */}
-            <Reveal direction="up" delay={400}>
+            <Reveal direction="up" delay={250} priority>
               <div className="mt-10 flex flex-wrap items-center gap-4 pt-4 border-t border-border/60">
                 <ul className="flex items-center">
                   {CLIENT_AVATARS.map((avatar, index) => (
@@ -172,7 +169,7 @@ export function HeroSection() {
 
           {/* Visual column (5 cols on desktop) */}
           <div className="relative lg:col-span-5">
-            <Reveal direction="scale" delay={200}>
+            <Reveal direction="scale" delay={150} priority>
               <div className="relative mx-auto max-w-[500px] lg:max-w-none">
                 {/* Card Container Frame */}
                 <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-b from-card to-secondary/30 p-2.5 sm:p-3 shadow-soft-xl">
@@ -211,9 +208,7 @@ export function HeroSection() {
                       <TrendingUp className="size-5" />
                     </div>
                     <div className="leading-tight">
-                      <p className="text-[14px] font-black text-navy">
-                        +148% Avg. Growth
-                      </p>
+                      <p className="text-[14px] font-black text-navy">+148% Avg. Growth</p>
                       <p className="text-[11px] font-medium text-muted-foreground">
                         Measurable Client ROI
                       </p>
@@ -234,4 +229,3 @@ export function HeroSection() {
     </section>
   );
 }
-

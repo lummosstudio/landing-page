@@ -12,24 +12,29 @@ interface RevealProps extends React.HTMLAttributes<HTMLElement> {
   once?: boolean;
   className?: string;
   as?: React.ElementType;
+  priority?: boolean;
 }
 
 export function Reveal({
   children,
   direction = "up",
   delay = 0,
-  duration = 750,
-  threshold = 0.12,
+  duration = 450,
+  threshold = 0.08,
   once = true,
   className,
   as: Component = "div",
+  priority = false,
   style,
   ...props
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(priority);
 
   useEffect(() => {
+    // Priority / above-the-fold elements render immediately without waiting for observer
+    if (priority) return;
+
     const node = ref.current;
     if (!node) return;
 
@@ -54,8 +59,8 @@ export function Reveal({
       },
       {
         threshold,
-        rootMargin: "0px 0px -40px 0px",
-      }
+        rootMargin: "80px 0px 40px 0px",
+      },
     );
 
     observer.observe(node);
@@ -63,19 +68,18 @@ export function Reveal({
     return () => {
       observer.disconnect();
     };
-  }, [threshold, once]);
+  }, [threshold, once, priority]);
 
   // Initial hidden styles based on direction
   const getInitialStyle = (): React.CSSProperties => {
-    const transition = `opacity ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, filter ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`;
+    const transition = `opacity ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform ${duration}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`;
 
     if (isVisible) {
       return {
         opacity: 1,
         transform: "translate3d(0, 0, 0) scale(1)",
-        filter: "blur(0px)",
-        transition,
-        willChange: "opacity, transform",
+        transition: priority && delay === 0 ? undefined : transition,
+        willChange: priority ? undefined : "opacity, transform",
         ...style,
       };
     }
@@ -83,19 +87,19 @@ export function Reveal({
     let transform = "translate3d(0, 0, 0)";
     switch (direction) {
       case "up":
-        transform = "translate3d(0, 32px, 0)";
+        transform = "translate3d(0, 16px, 0)";
         break;
       case "down":
-        transform = "translate3d(0, -32px, 0)";
+        transform = "translate3d(0, -16px, 0)";
         break;
       case "left":
-        transform = "translate3d(32px, 0, 0)";
+        transform = "translate3d(16px, 0, 0)";
         break;
       case "right":
-        transform = "translate3d(-32px, 0, 0)";
+        transform = "translate3d(-16px, 0, 0)";
         break;
       case "scale":
-        transform = "scale(0.95)";
+        transform = "scale(0.97)";
         break;
       case "none":
       case "fade":
@@ -107,7 +111,6 @@ export function Reveal({
     return {
       opacity: 0,
       transform,
-      filter: "blur(2px)",
       transition,
       willChange: "opacity, transform",
       ...style,
@@ -136,14 +139,16 @@ interface RevealContainerProps extends React.HTMLAttributes<HTMLElement> {
   direction?: RevealDirection;
   className?: string;
   as?: React.ElementType;
+  priority?: boolean;
 }
 
 export function RevealContainer({
   children,
-  staggerDelay = 90,
+  staggerDelay = 60,
   direction = "up",
   className,
   as: Component = "div",
+  priority = false,
   ...props
 }: RevealContainerProps) {
   return (
@@ -151,7 +156,7 @@ export function RevealContainer({
       {React.Children.map(children, (child, index) => {
         if (!React.isValidElement(child)) return child;
         return (
-          <Reveal direction={direction} delay={index * staggerDelay}>
+          <Reveal direction={direction} delay={index * staggerDelay} priority={priority}>
             {child}
           </Reveal>
         );

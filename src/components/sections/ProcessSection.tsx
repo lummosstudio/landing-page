@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Compass,
-  Target,
-  Wand2,
-  Zap,
-  TrendingUp,
-} from "lucide-react";
+import { Compass, Target, Wand2, Zap, TrendingUp } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 import { Reveal } from "@/components/ui/ScrollReveal";
@@ -116,7 +110,6 @@ export function ProcessSection() {
       </h2>
 
       <div className="mx-auto flex max-w-[1440px] items-center gap-6 sm:gap-8 px-4 sm:px-6 lg:gap-8 lg:px-8">
-        
         {/* Left Camera Visual Showcase */}
         <Reveal direction="right" delay={100} className="hidden lg:block shrink-0">
           <img
@@ -132,7 +125,6 @@ export function ProcessSection() {
         {/* 5-Step Connected Flow Container */}
         <div className="w-full">
           <ol className="relative grid w-full gap-y-10 sm:gap-y-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 lg:gap-x-4">
-            
             {/* 
               Continuous Background Connector Line behind pods (Desktop)
               Silky 1000ms cubic-bezier transition for buttery smooth progression
@@ -160,11 +152,13 @@ export function ProcessSection() {
                   className="group relative flex flex-col items-center px-2 text-center cursor-pointer select-none"
                   onClick={() => setActiveStep(i)}
                 >
-                  <Reveal direction="up" delay={i * 70} className="w-full flex flex-col items-center">
-                    
+                  <Reveal
+                    direction="up"
+                    delay={i * 70}
+                    className="w-full flex flex-col items-center"
+                  >
                     {/* Modern Squircle Pod Housing */}
                     <div className="relative z-10">
-                      
                       {/* Outer ambient glow halo (Silky 800ms cross-fade) */}
                       <span
                         className={`pointer-events-none absolute -inset-2 rounded-3xl transition-opacity duration-800 ease-[cubic-bezier(0.16,1,0.3,1)] blur-md ${
@@ -245,18 +239,16 @@ export function ProcessSection() {
                         isActive
                           ? "w-8 bg-brand-gradient shadow-soft-xs"
                           : isPast
-                          ? "w-2 bg-border"
-                          : "w-1.5 bg-border/40"
+                            ? "w-2 bg-border"
+                            : "w-1.5 bg-border/40"
                       }`}
                     />
-
                   </Reveal>
                 </li>
               );
             })}
           </ol>
         </div>
-
       </div>
     </section>
   );

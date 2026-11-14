@@ -44,7 +44,7 @@ export const Route = createFileRoute("/contact")({
       {
         name: "keywords",
         content:
-          "contact lumos digital media, digital marketing agency pondicherry contact, hire video production pondicherry, social media marketing agency pondicherry phone, advertising agency vazhudavur road puducherry, digital marketing consultation pondicherry",
+          "contact lumos digital media, digital marketing agency pondicherry contact, book free consultation pondicherry, hire video production pondicherry, social media marketing agency pondicherry phone, advertising agency vellalar street puducherry, digital marketing consultation pondicherry",
       },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
@@ -84,11 +84,10 @@ export const Route = createFileRoute("/contact")({
               telephone: "+91 90037 82254",
               address: {
                 "@type": "PostalAddress",
-                streetAddress:
-                  "Opposite Hotel Tamizh Park, Sokkanathan Pet, Mothilal Nagar, Marie Oulgaret, Vazhudavur Road",
+                streetAddress: "3rd floor, 127-vellalar street",
                 addressLocality: "Puducherry",
                 addressRegion: "Puducherry",
-                postalCode: "605009",
+                postalCode: "605001",
                 addressCountry: "IN",
               },
               geo: {
@@ -99,14 +98,7 @@ export const Route = createFileRoute("/contact")({
               openingHoursSpecification: [
                 {
                   "@type": "OpeningHoursSpecification",
-                  dayOfWeek: [
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                  ],
+                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
                   opens: "09:00",
                   closes: "19:00",
                 },
@@ -160,7 +152,7 @@ export const Route = createFileRoute("/contact")({
                   name: "How can I get a customized proposal?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Fill out the enquiry form below or call us directly. We review your requirements and share a structured proposal within one business day.",
+                    text: "Fill out the free consultation booking form below or call us directly. We review your requirements and schedule your consultation within one business day.",
                   },
                 },
               ],
@@ -232,7 +224,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "How can I get a customized proposal?",
-    a: "Fill out the enquiry form below or call us directly. We review your requirements and share a structured proposal within one business day.",
+    a: "Fill out the free consultation booking form below or call us directly. We review your requirements and schedule your consultation within one business day.",
   },
 ];
 
@@ -280,8 +272,8 @@ const CONTACT_CARDS: {
     icon: MapPin,
     items: [
       {
-        text: "Opp. Hotel Tamizh Park, Sokkanathan Pet, Puducherry - 605009",
-        href: "https://maps.google.com/?q=Hotel+Tamizh+Park,Sokkanathan+Pet,Mothilal+Nagar,Puducherry,605009",
+        text: "3rd Floor, 127-vellalar street, Puducherry - 605001",
+        href: "https://maps.google.com/?q=127+Vellalar+Street,Puducherry,605001",
       },
     ],
   },
@@ -314,7 +306,7 @@ function ContactPage() {
     const projectType = String(formData.get("projectType") || "").trim();
     const details = String(formData.get("details") || "").trim();
 
-    const subject = `New Growth Enquiry: ${fullName}${company ? ` (${company})` : ""}`;
+    const subject = `Free Consultation Request: ${fullName}${company ? ` (${company})` : ""}`;
     const bodyLines = [
       `Full Name: ${fullName}`,
       `Brand / Company: ${company || "Not provided"}`,
@@ -323,7 +315,7 @@ function ContactPage() {
       `Primary Service: ${projectType || "General Marketing / Growth"}`,
       "",
       "Goals & Project Details:",
-      details,
+      details || "Not provided",
     ];
     const body = bodyLines.join("\n");
     const mailtoUrl = `mailto:info@lumosdigitalmedia.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -363,13 +355,13 @@ function ContactPage() {
             <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-14">
               {/* Copy Column (7 cols) */}
               <div className="flex flex-col lg:col-span-7">
-                <Reveal direction="down" delay={0}>
+                <Reveal direction="down" delay={0} priority>
                   <SectionLabel>
-                    Get In <span className="text-brand-gradient">Touch</span>
+                    Book A Free <span className="text-brand-gradient">Consultation</span>
                   </SectionLabel>
                 </Reveal>
 
-                <Reveal direction="up" delay={80}>
+                <Reveal direction="up" delay={50} priority>
                   <h1
                     id="contact-hero-heading"
                     className="mt-5 text-[clamp(2.35rem,5.2vw,3.85rem)] leading-[1.08] font-extrabold tracking-[-0.035em] text-navy"
@@ -378,29 +370,27 @@ function ContactPage() {
                     <br />
                     Something
                     <br />
-                    <span className="text-brand-gradient relative inline-block">
-                      Meaningful.
-                    </span>
+                    <span className="text-brand-gradient relative inline-block">Meaningful.</span>
                   </h1>
                 </Reveal>
 
-                <Reveal direction="up" delay={160}>
+                <Reveal direction="up" delay={100} priority>
                   <p className="mt-5 max-w-[520px] text-[15.5px] sm:text-[16.5px] leading-[1.75] text-muted-foreground">
-                    Have an ambitious brand, video campaign, or growth goal in mind?
-                    Share your objectives and let&apos;s discuss the strategy, content,
-                    and performance marketing that will get you there.
+                    Have an ambitious brand, video campaign, or growth goal in mind? Book a free
+                    consultation and let&apos;s discuss the strategy, content, and performance
+                    marketing that will get you there.
                   </p>
                 </Reveal>
 
                 {/* Direct Action Buttons */}
-                <Reveal direction="up" delay={240}>
+                <Reveal direction="up" delay={150} priority>
                   <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
                     <Button
                       asChild
                       className="h-[52px] rounded-xl bg-navy px-8 text-[15px] font-semibold text-primary-foreground shadow-navy-btn hover:bg-navy/90 hover:shadow-navy-btn-hover active:scale-[0.99] transition-all"
                     >
-                      <a href="#enquiry">
-                        Start A Conversation
+                      <a href="#consultation">
+                        Book A Free Consultation
                         <ArrowRight className="ml-2.5 size-4" strokeWidth={2.5} />
                       </a>
                     </Button>
@@ -421,7 +411,7 @@ function ContactPage() {
 
               {/* Visual Showcase (5 cols) */}
               <div className="relative lg:col-span-5">
-                <Reveal direction="scale" delay={200}>
+                <Reveal direction="scale" delay={100} priority>
                   <div className="relative mx-auto max-w-[500px] lg:max-w-none">
                     <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-b from-card to-secondary/30 p-2.5 sm:p-3 shadow-soft-xl">
                       <div className="relative overflow-hidden rounded-2xl bg-muted/40 aspect-[4/3.3] sm:aspect-[4/3.4]">
@@ -447,7 +437,7 @@ function ContactPage() {
                             Puducherry Studio
                           </p>
                           <p className="text-[10px] font-medium text-muted-foreground">
-                            Opp. Hotel Tamizh Park
+                            127, Vellalar Street
                           </p>
                         </div>
                       </div>
@@ -457,9 +447,7 @@ function ContactPage() {
                           <Clock className="size-5" />
                         </div>
                         <div className="leading-tight">
-                          <p className="text-[14px] font-black text-navy">
-                            Quick Response
-                          </p>
+                          <p className="text-[14px] font-black text-navy">Quick Response</p>
                           <p className="text-[11px] font-medium text-muted-foreground">
                             Within 24 Hours
                           </p>
@@ -474,7 +462,10 @@ function ContactPage() {
         </section>
 
         {/* CONTACT INFO CARDS */}
-        <section aria-labelledby="contact-info-heading" className="py-10 sm:py-14 bg-card/40 border-y border-border/40">
+        <section
+          aria-labelledby="contact-info-heading"
+          className="py-10 sm:py-14 bg-card/40 border-y border-border/40"
+        >
           <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
             <h2 id="contact-info-heading" className="sr-only">
               Contact information
@@ -512,8 +503,8 @@ function ContactPage() {
 
         {/* FORM + WHY SECTION */}
         <section
-          id="enquiry"
-          aria-labelledby="enquiry-heading"
+          id="consultation"
+          aria-labelledby="consultation-heading"
           className="scroll-mt-12 bg-soft-gray py-14 sm:py-16 lg:py-24"
         >
           <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
@@ -523,14 +514,13 @@ function ContactPage() {
                 <Reveal direction="up">
                   <div className="rounded-3xl border border-border bg-card p-6 sm:p-9 shadow-soft">
                     <SectionLabel>
-                      Growth <span className="text-brand-gradient">Enquiry</span>
+                      Free <span className="text-brand-gradient">Consultation</span>
                     </SectionLabel>
                     <h2
-                      id="enquiry-heading"
+                      id="consultation-heading"
                       className="mt-4 text-[clamp(1.6rem,3vw,2.25rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
                     >
-                      Tell Us About{" "}
-                      <span className="text-brand-gradient">Your Vision</span>
+                      Book A Free <span className="text-brand-gradient">Consultation</span>
                     </h2>
 
                     {submitted && submittedData ? (
@@ -544,9 +534,10 @@ function ContactPage() {
                           Thank you, {submittedData.fullName || "there"}!
                         </h3>
                         <p className="mx-auto mt-2 max-w-md text-[14.5px] leading-[1.75] text-muted-foreground">
-                          Your enquiry has been prepared for{" "}
-                          <span className="font-semibold text-navy">info@lumosdigitalmedia.in</span>.
-                          If your email client didn&apos;t open automatically, click the button below:
+                          Your consultation request has been prepared for{" "}
+                          <span className="font-semibold text-navy">info@lumosdigitalmedia.in</span>
+                          . If your email client didn&apos;t open automatically, click the button
+                          below:
                         </p>
                         <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
                           <Button
@@ -567,7 +558,7 @@ function ContactPage() {
                             }}
                             className="h-11 w-full sm:w-auto rounded-xl border-border bg-card px-6 text-[14px] font-semibold text-navy hover:bg-secondary"
                           >
-                            Send another enquiry
+                            Book another consultation
                           </Button>
                         </div>
                       </div>
@@ -660,12 +651,11 @@ function ContactPage() {
 
                         <div className="grid gap-2 sm:col-span-2">
                           <Label htmlFor="details" className={LABEL_CLASS}>
-                            Tell Us About Your Goals *
+                            Tell Us About Your Goals (Optional)
                           </Label>
                           <Textarea
                             id="details"
                             name="details"
-                            required
                             rows={4}
                             maxLength={1000}
                             placeholder="Describe your brand, current challenges, and what milestones you aim to achieve..."
@@ -679,7 +669,7 @@ function ContactPage() {
                             className="h-[52px] w-full sm:w-auto rounded-xl bg-navy px-8 text-[15px] font-semibold text-primary-foreground shadow-navy-btn hover:bg-navy/90 hover:shadow-navy-btn-hover active:scale-[0.99] transition-all"
                           >
                             <Send className="mr-2 size-4" />
-                            Send Growth Enquiry
+                            Book A Free Consultation
                           </Button>
                         </div>
                       </form>
@@ -695,8 +685,7 @@ function ContactPage() {
                     Why <span className="text-brand-gradient">Lumos</span>
                   </SectionLabel>
                   <h2 className="mt-4 text-[clamp(1.6rem,3vw,2.25rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy">
-                    Why Partner With{" "}
-                    <span className="text-brand-gradient">Our Team?</span>
+                    Why Partner With <span className="text-brand-gradient">Our Team?</span>
                   </h2>
 
                   <ul className="mt-6 space-y-3.5">
@@ -725,7 +714,10 @@ function ContactPage() {
         </section>
 
         {/* LOCATION SECTION */}
-        <section aria-labelledby="location-heading" className="py-14 sm:py-16 lg:py-24 bg-background">
+        <section
+          aria-labelledby="location-heading"
+          className="py-14 sm:py-16 lg:py-24 bg-background"
+        >
           <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
             <Reveal direction="up">
               <div className="max-w-xl">
@@ -736,8 +728,7 @@ function ContactPage() {
                   id="location-heading"
                   className="mt-4 text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
                 >
-                  Find Us In{" "}
-                  <span className="text-brand-gradient">Puducherry</span>
+                  Find Us In <span className="text-brand-gradient">Puducherry</span>
                 </h2>
               </div>
             </Reveal>
@@ -749,22 +740,23 @@ function ContactPage() {
                     Main Office & Studio
                   </p>
                   <h3 className="mt-2 text-[20px] font-extrabold text-navy leading-snug">
-                    Opposite Hotel Tamizh Park
+                    127, Vellalar Street
                   </h3>
                   <div className="mt-3 space-y-1 text-[14.5px] leading-[1.65] text-muted-foreground">
-                    <p>Sokkanathan Pet, Mothilal Nagar,</p>
-                    <p>Marie Oulgaret, Vazhudavur Road,</p>
-                    <p className="font-semibold text-navy">Puducherry — 605009</p>
+                    <p className="font-semibold text-navy">3rd Floor</p>
+                    <p>127-Vellalar Street,</p>
+                    <p className="font-semibold text-navy">Puducherry — 605001</p>
                   </div>
                   <p className="mt-4 text-[13.5px] leading-[1.7] text-muted-foreground">
-                    Headquartered in Puducherry, we partner with ambitious brands across Tamil Nadu, Bangalore, Kerala, and across India.
+                    Headquartered in Puducherry, we partner with ambitious brands across Tamil Nadu,
+                    Bangalore, Kerala, and across India.
                   </p>
                   <Button
                     asChild
                     className="mt-6 h-11 w-full sm:w-auto rounded-xl bg-navy px-6 text-[14px] font-semibold text-primary-foreground hover:bg-navy/90 shadow-navy-btn transition-all"
                   >
                     <a
-                      href="https://maps.google.com/?q=Hotel+Tamizh+Park,Sokkanathan+Pet,Mothilal+Nagar,Puducherry,605009"
+                      href="https://maps.google.com/?q=127+Vellalar+Street,Puducherry,605001"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -776,8 +768,8 @@ function ContactPage() {
 
                 <div className="relative h-[280px] sm:h-[340px] overflow-hidden rounded-2xl bg-soft-gray lg:col-span-7 border border-border shadow-inner">
                   <iframe
-                    title="Map showing Lumos Digital's office opposite Hotel Tamizh Park in Puducherry"
-                    src="https://maps.google.com/maps?q=Hotel+Tamizh+Park,+Sokkanathan+Pet,+Mothilal+Nagar,+Puducherry+605009&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                    title="Map showing Lumos Digital's office at 127 Vellalar Street in Puducherry"
+                    src="https://maps.google.com/maps?q=127+Vellalar+Street,+Puducherry+605001&t=&z=16&ie=UTF8&iwloc=&output=embed"
                     loading="lazy"
                     className="size-full border-0"
                     allowFullScreen
@@ -801,8 +793,7 @@ function ContactPage() {
                     id="faq-heading"
                     className="mt-4 text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
                   >
-                    Questions,{" "}
-                    <span className="text-brand-gradient">Answered.</span>
+                    Questions, <span className="text-brand-gradient">Answered.</span>
                   </h2>
                   <p className="mt-4 text-[14.5px] leading-[1.75] text-muted-foreground">
                     Need a specialized marketing scope or have unique timeline requirements?

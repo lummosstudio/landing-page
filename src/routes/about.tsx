@@ -94,11 +94,10 @@ export const Route = createFileRoute("/about")({
             email: "info@lumosdigitalmedia.in",
             address: {
               "@type": "PostalAddress",
-              streetAddress:
-                "Opposite Hotel Tamizh Park, Sokkanathan Pet, Mothilal Nagar, Marie Oulgaret, Vazhudavur Road",
+              streetAddress: "3rd floor, 127-vellalar street",
               addressLocality: "Puducherry",
               addressRegion: "Puducherry",
-              postalCode: "605009",
+              postalCode: "605001",
               addressCountry: "IN",
             },
             geo: {
@@ -165,11 +164,31 @@ const WHAT_WE_DO: { n: string; title: string; text: string; icon: LucideIcon }[]
 ];
 
 const JOURNEY: { title: string; text: string; icon: LucideIcon }[] = [
-  { title: "Discover", text: "We understand your business, audience, goals and competitive space.", icon: Lightbulb },
-  { title: "Strategy", text: "We define the roadmap, content angles and distribution channels.", icon: CalendarCheck },
-  { title: "Create", text: "We shoot, write, design and craft high-impact brand assets.", icon: Aperture },
-  { title: "Launch", text: "We distribute campaigns across targeted channels with precision.", icon: Wand2 },
-  { title: "Optimize", text: "We analyze performance metrics and continuously scale results.", icon: PackageCheck },
+  {
+    title: "Discover",
+    text: "We understand your business, audience, goals and competitive space.",
+    icon: Lightbulb,
+  },
+  {
+    title: "Strategy",
+    text: "We define the roadmap, content angles and distribution channels.",
+    icon: CalendarCheck,
+  },
+  {
+    title: "Create",
+    text: "We shoot, write, design and craft high-impact brand assets.",
+    icon: Aperture,
+  },
+  {
+    title: "Launch",
+    text: "We distribute campaigns across targeted channels with precision.",
+    icon: Wand2,
+  },
+  {
+    title: "Optimize",
+    text: "We analyze performance metrics and continuously scale results.",
+    icon: PackageCheck,
+  },
 ];
 
 const WHY: { title: string; text: string; icon: LucideIcon }[] = [
@@ -262,13 +281,13 @@ function AboutPage() {
             <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-10 xl:gap-14">
               {/* Copy Column (7 cols) */}
               <div className="flex flex-col lg:col-span-7">
-                <Reveal direction="down" delay={0}>
+                <Reveal direction="down" delay={0} priority>
                   <SectionLabel>
                     About <span className="text-brand-gradient">Lumos Digital Media</span>
                   </SectionLabel>
                 </Reveal>
 
-                <Reveal direction="up" delay={80}>
+                <Reveal direction="up" delay={50} priority>
                   <h1
                     id="about-hero-heading"
                     className="mt-5 text-[clamp(2.35rem,5.2vw,3.85rem)] leading-[1.08] font-extrabold tracking-[-0.035em] text-navy"
@@ -277,22 +296,20 @@ function AboutPage() {
                     <br />
                     That Are Ready
                     <br />
-                    <span className="text-brand-gradient relative inline-block">
-                      To Grow.
-                    </span>
+                    <span className="text-brand-gradient relative inline-block">To Grow.</span>
                   </h1>
                 </Reveal>
 
-                <Reveal direction="up" delay={160}>
+                <Reveal direction="up" delay={100} priority>
                   <p className="mt-5 max-w-[540px] text-[15.5px] sm:text-[16.5px] leading-[1.75] text-muted-foreground">
-                    Lumos Digital Media is a creative digital marketing and branding agency
-                    helping businesses earn attention, build authority, and achieve sustainable
-                    revenue through smart strategy and premium storytelling.
+                    Lumos Digital Media is a creative digital marketing and branding agency helping
+                    businesses earn attention, build authority, and achieve sustainable revenue
+                    through smart strategy and premium storytelling.
                   </p>
                 </Reveal>
 
                 {/* Stat Chips */}
-                <Reveal direction="up" delay={240}>
+                <Reveal direction="up" delay={150} priority>
                   <div className="mt-7 flex flex-wrap items-center gap-3">
                     {STATS.map(({ icon: Icon, value, label }) => (
                       <div
@@ -308,14 +325,14 @@ function AboutPage() {
                 </Reveal>
 
                 {/* CTAs */}
-                <Reveal direction="up" delay={320}>
+                <Reveal direction="up" delay={200} priority>
                   <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4">
                     <Button
                       asChild
                       className="h-[52px] rounded-xl bg-navy px-8 text-[15px] font-semibold text-primary-foreground shadow-navy-btn hover:bg-navy/90 hover:shadow-navy-btn-hover active:scale-[0.99] transition-all"
                     >
                       <Link to="/contact">
-                        Start Your Project
+                        Book A Free Consultation
                         <ArrowRight className="ml-2.5 size-4" strokeWidth={2.5} />
                       </Link>
                     </Button>
@@ -336,8 +353,12 @@ function AboutPage() {
 
               {/* Visual Showcase (5 cols) */}
               <div className="relative lg:col-span-5">
-                <Reveal direction="scale" delay={200}>
-                  <InteractiveTilt maxTilt={8} scale={1.02} className="mx-auto max-w-[500px] lg:max-w-none">
+                <Reveal direction="scale" delay={150} priority>
+                  <InteractiveTilt
+                    maxTilt={8}
+                    scale={1.02}
+                    className="mx-auto max-w-[500px] lg:max-w-none"
+                  >
                     <div
                       className="relative overflow-hidden rounded-3xl border border-border/80 bg-gradient-to-b from-card to-secondary/30 p-2.5 sm:p-3 shadow-soft-xl"
                       style={{ transformStyle: "preserve-3d" }}
@@ -381,9 +402,7 @@ function AboutPage() {
                           <Camera className="size-5" />
                         </div>
                         <div className="leading-tight">
-                          <p className="text-[14px] font-black text-navy">
-                            Production House
-                          </p>
+                          <p className="text-[14px] font-black text-navy">Production House</p>
                           <p className="text-[11px] font-medium text-muted-foreground">
                             In-House Film & Design
                           </p>
@@ -398,7 +417,10 @@ function AboutPage() {
         </section>
 
         {/* OUR STORY SECTION */}
-        <section aria-labelledby="story-heading" className="py-14 sm:py-16 lg:py-24 bg-card/40 border-y border-border/40">
+        <section
+          aria-labelledby="story-heading"
+          className="py-14 sm:py-16 lg:py-24 bg-card/40 border-y border-border/40"
+        >
           <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
               {/* Image Frame (5 cols) */}
@@ -430,7 +452,9 @@ function AboutPage() {
                         </div>
                         <div className="leading-tight">
                           <p className="text-[12px] font-black text-navy">250+ Brands</p>
-                          <p className="text-[10.5px] font-medium text-muted-foreground">South India & Beyond</p>
+                          <p className="text-[10.5px] font-medium text-muted-foreground">
+                            South India & Beyond
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -468,8 +492,9 @@ function AboutPage() {
                       commercial purpose.
                     </p>
                     <p>
-                      We partner with ambitious founders, established hospitality brands, and growing
-                      enterprises across South India to turn bold vision into measurable growth.
+                      We partner with ambitious founders, established hospitality brands, and
+                      growing enterprises across South India to turn bold vision into measurable
+                      growth.
                     </p>
                   </div>
                 </Reveal>
@@ -478,17 +503,23 @@ function AboutPage() {
                   <div className="mt-8 pt-6 border-t border-border/60 flex flex-wrap items-center gap-6">
                     <div>
                       <p className="text-[26px] font-black text-navy">10M+</p>
-                      <p className="text-[12.5px] font-medium text-muted-foreground">Views & Impressions</p>
+                      <p className="text-[12.5px] font-medium text-muted-foreground">
+                        Views & Impressions
+                      </p>
                     </div>
                     <div className="h-10 w-px bg-border/80 hidden sm:block" />
                     <div>
                       <p className="text-[26px] font-black text-navy">98%</p>
-                      <p className="text-[12.5px] font-medium text-muted-foreground">Satisfaction Score</p>
+                      <p className="text-[12.5px] font-medium text-muted-foreground">
+                        Satisfaction Score
+                      </p>
                     </div>
                     <div className="h-10 w-px bg-border/80 hidden sm:block" />
                     <div>
                       <p className="text-[26px] font-black text-navy">100%</p>
-                      <p className="text-[12.5px] font-medium text-muted-foreground">In-House Production</p>
+                      <p className="text-[12.5px] font-medium text-muted-foreground">
+                        In-House Production
+                      </p>
                     </div>
                   </div>
                 </Reveal>
@@ -515,8 +546,7 @@ function AboutPage() {
                   id="what-we-do-heading"
                   className="mt-4 text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
                 >
-                  Everything Your Brand Needs{" "}
-                  <span className="text-brand-gradient">To Scale.</span>
+                  Everything Your Brand Needs <span className="text-brand-gradient">To Scale.</span>
                 </h2>
               </div>
             </Reveal>
@@ -570,13 +600,12 @@ function AboutPage() {
                     id="capabilities-heading"
                     className="mt-4 text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
                   >
-                    From Insight To{" "}
-                    <span className="text-brand-gradient">Impact.</span>
+                    From Insight To <span className="text-brand-gradient">Impact.</span>
                   </h2>
                 </div>
                 <p className="max-w-md text-[14.5px] leading-[1.75] text-muted-foreground">
-                  Our seamless 5-step growth flywheel keeps strategy, creative production,
-                  and paid performance synchronized toward one clear business objective.
+                  Our seamless 5-step growth flywheel keeps strategy, creative production, and paid
+                  performance synchronized toward one clear business objective.
                 </p>
               </div>
             </Reveal>
@@ -651,8 +680,8 @@ function AboutPage() {
                             isActive
                               ? "w-8 bg-brand-gradient shadow-soft-xs"
                               : isPast
-                              ? "w-2 bg-border"
-                              : "w-1.5 bg-border/40"
+                                ? "w-2 bg-border"
+                                : "w-1.5 bg-border/40"
                           }`}
                         />
                       </div>
@@ -682,8 +711,7 @@ function AboutPage() {
                   id="why-heading"
                   className="mt-4 text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
                 >
-                  Why Brands{" "}
-                  <span className="text-brand-gradient">Choose Lumos</span>
+                  Why Brands <span className="text-brand-gradient">Choose Lumos</span>
                 </h2>
               </div>
             </Reveal>
@@ -722,7 +750,10 @@ function AboutPage() {
         </section>
 
         {/* INDUSTRIES WE SERVE */}
-        <section aria-labelledby="industries-heading" className="py-14 sm:py-16 lg:py-24 bg-background">
+        <section
+          aria-labelledby="industries-heading"
+          className="py-14 sm:py-16 lg:py-24 bg-background"
+        >
           <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
             <Reveal direction="up">
               <div className="max-w-xl">
@@ -733,8 +764,7 @@ function AboutPage() {
                   id="industries-heading"
                   className="mt-4 text-[clamp(1.75rem,3.4vw,2.5rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
                 >
-                  Built For Brands Of{" "}
-                  <span className="text-brand-gradient">All Scales</span>
+                  Built For Brands Of <span className="text-brand-gradient">All Scales</span>
                 </h2>
               </div>
             </Reveal>
@@ -754,11 +784,7 @@ function AboutPage() {
                         <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-brand-amber to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
 
                         <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-secondary text-brand-coral transition-all duration-400 group-hover:scale-110 group-hover:bg-brand-gradient group-hover:text-navy group-hover:shadow-brand-btn">
-                          <Icon
-                            className="size-4 shrink-0"
-                            strokeWidth={2}
-                            aria-hidden="true"
-                          />
+                          <Icon className="size-4 shrink-0" strokeWidth={2} aria-hidden="true" />
                         </div>
                         <span className="min-w-0 text-[13px] font-semibold text-navy leading-tight transition-colors group-hover:text-brand-coral">
                           {label}

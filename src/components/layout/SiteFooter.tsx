@@ -1,4 +1,13 @@
-import { ArrowRight, Instagram, Linkedin, Youtube, Mail, Phone, MapPin, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Instagram,
+  Linkedin,
+  Youtube,
+  Mail,
+  Phone,
+  MapPin,
+  Sparkles,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
@@ -38,8 +47,8 @@ const CONTACT_ITEMS = [
   { label: "+91 97875 82488", href: "tel:+919787582488", icon: Phone },
   { label: "info@lumosdigitalmedia.in", href: "mailto:info@lumosdigitalmedia.in", icon: Mail },
   {
-    label: "Opp. Hotel Tamizh Park, Sokkanathan Pet, Puducherry - 605009",
-    href: "https://maps.google.com/?q=Hotel+Tamizh+Park,Sokkanathan+Pet,Mothilal+Nagar,Puducherry,605009",
+    label: "3rd Floor, 127-vellalar street, Puducherry - 605001",
+    href: "https://maps.google.com/?q=127+Vellalar+Street,Puducherry,605001",
     icon: MapPin,
     isExternal: true,
   },
@@ -76,14 +85,13 @@ export function SiteFooter() {
               </div>
 
               <h2 className="mt-4 text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.08] font-extrabold tracking-[-0.035em] text-primary-foreground">
-                Let&apos;s Build Something{" "}
-                <br className="hidden sm:inline" />
+                Let&apos;s Build Something <br className="hidden sm:inline" />
                 <span className="text-brand-gradient">Extraordinary Together.</span>
               </h2>
 
               <p className="mt-4 max-w-xl text-[15px] sm:text-[16px] leading-[1.75] text-primary-foreground/75">
-                From high-conversion ad campaigns to cinematic brand storytelling, we partner
-                with ambitious businesses ready to earn attention and lead their market.
+                From high-conversion ad campaigns to cinematic brand storytelling, we partner with
+                ambitious businesses ready to earn attention and lead their market.
               </p>
             </div>
 
@@ -93,7 +101,7 @@ export function SiteFooter() {
                 className="bg-brand-gradient h-[54px] w-full rounded-2xl px-8 text-[15.5px] font-bold text-navy shadow-brand-btn hover:shadow-brand-btn-hover hover:opacity-95 active:scale-[0.99] transition-all"
               >
                 <Link to="/contact">
-                  Start Your Project
+                  Book A Free Consultation
                   <ArrowRight className="ml-2.5 size-4" strokeWidth={2.5} />
                 </Link>
               </Button>
@@ -227,4 +235,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-

@@ -179,7 +179,6 @@ export function ServicesSection() {
         ================================================================
       */}
       <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
-        
         {/* Header Row */}
         <Reveal direction="up">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -192,8 +191,7 @@ export function ServicesSection() {
                 id="services-heading"
                 className="mt-3 text-[clamp(1.75rem,3.5vw,2.6rem)] leading-[1.15] font-extrabold tracking-[-0.03em] text-navy"
               >
-                We Turn Ideas Into{" "}
-                <span className="text-brand-gradient">Digital Growth.</span>
+                We Turn Ideas Into <span className="text-brand-gradient">Digital Growth.</span>
               </h2>
             </div>
 
@@ -242,7 +240,7 @@ export function ServicesSection() {
                 className="hidden sm:inline-flex h-10 rounded-xl bg-navy px-4 text-[13px] font-semibold text-primary-foreground shadow-navy-btn hover:bg-navy/90"
               >
                 <Link to="/contact">
-                  Start Project
+                  Book Free Consultation
                   <ArrowRight className="ml-1.5 size-3.5" />
                 </Link>
               </Button>
@@ -256,7 +254,7 @@ export function ServicesSection() {
           Contained inside the 1240px grid with soft edge fade masks
           ================================================================
         */}
-        <div 
+        <div
           className="relative mt-8 sm:mt-10 overflow-hidden rounded-3xl"
           onMouseEnter={() => {
             isHoveredRef.current = true;

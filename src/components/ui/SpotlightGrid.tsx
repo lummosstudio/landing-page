@@ -20,7 +20,11 @@ export function SpotlightGrid({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
-  const [mousePos, setMousePos] = useState<MouseCoordinates>({ clientX: 0, clientY: 0, opacity: 0 });
+  const [mousePos, setMousePos] = useState<MouseCoordinates>({
+    clientX: 0,
+    clientY: 0,
+    opacity: 0,
+  });
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     setMousePos({
@@ -77,7 +81,7 @@ export function SpotlightCard({
       ref={cardRef}
       className={cn(
         "group relative overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-7 shadow-soft-xs transition-all duration-500 hover:-translate-y-1.5 hover:border-brand-amber/60 hover:shadow-soft-hover",
-        className
+        className,
       )}
       {...props}
     >
@@ -98,4 +102,3 @@ export function SpotlightCard({
     </div>
   );
 }
-
